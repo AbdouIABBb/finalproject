@@ -1,24 +1,24 @@
 <?php
 session_start();
+session_regenerate_id();
 if(isset($_SESSION['nom'])){
-  header('location:profile.php');
+  //header('location:profile.php');
 
  }
-include "inc/functions.php";
-$user = true;
-$category= getALLcategory();
+include "../inc/functions.php";
+$admin = true;
 if (isset($_POST['login'])){
-  $user =ConnectUser($_POST);
-  if($user){
-   if (count($user) > 0  ){ 
-   $_SESSION ['email']=$user['email'];
-   $_SESSION ['nom']=$user['nom'];
-   $_SESSION ['prenom']=$user['prenom'];
-   $_SESSION ['telephone']=$user['telephone'];
+  $admin =ConnectAdmin($_POST);
+  if($admin){
+   if (count($admin) > 0  ){
+    session_start(); 
+   $_SESSION ['email']=$admin['email'];
+   $_SESSION ['nom']=$admin['nom'];
+   $_SESSION ['mp']=$admin['mp'];
 
    header('location:profile.php');
    }
-  }
+}
 }
 
 ?>
@@ -35,13 +35,9 @@ if (isset($_POST['login'])){
   </head>
   <body>
   
-  <?php
-  include "inc/header.php";
-
-  ?>
 
     <div class="col-12 p-5">
-        <h1 class="text-center">Connexion</h1>
+        <h1 class="text-center">Espace Admin : Connexion</h1>
         <form method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
@@ -54,14 +50,12 @@ if (isset($_POST['login'])){
             <button type="submit" class="btn btn-primary" name="login">Se connecter</button>
         </form>
     </div>
-    <?php  include"inc/footer.php"?>
+    <?php  include"../inc/footer.php"?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
-
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"></script>
   <?php 
-    if(!$user){
+    if(!$admin){
         print "<script>
         Swal.fire({
         title : 'Erreur',

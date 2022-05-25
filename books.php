@@ -41,9 +41,7 @@ if(isset($_GET['id'])) {
     </div>
   </div>
   <!------Footer------>
-  <div class="bg-dark text-center p-5 mt-5">
-      <p class="text-white">Tous droits réservés</p>
-  </div>
+  <?php  include"inc/footer.php"?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>

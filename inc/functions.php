@@ -95,12 +95,27 @@ function ConnectUser($data){
   $password=md5($data['password']);
   $requette ="SELECT * FROM user WHERE email= '$email'AND password='$password'";
   $resultat = $conn ->query($requette);
-  $user = $resultat ->fetch();
-  return $user;
+  if($resultat->rowCount()>0){
+    $user = $resultat ->fetch();
+    return $user;
+  }
+  return false;
 
 
 
 
+}
+function ConnectAdmin ($data){
+  $conn=connect();
+  $email=$data['email'];
+  $mp=md5($data['password']);
+  $requette ="SELECT * FROM administrateur WHERE email= '$email'AND mp='$mp'";
+  $resultat = $conn ->query($requette);
+  if($resultat->rowCount()>0){
+    $admin = $resultat ->fetch();
+    return $admin;
+  }
+  return false;
 }
 
 ?>

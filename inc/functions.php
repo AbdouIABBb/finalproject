@@ -36,49 +36,71 @@ return $category ;
 
 } 
 
-function getALLproduit (){
+
+function getALLbook(){
 
     $conn=connect();
 
 
-$requette ="SELECT * FROM produit ";
+$requette ="SELECT * FROM book ";
 
 
 $resultat = $conn ->query($requette);
 
 
-$produit = $resultat ->fetchALL();
+$book = $resultat ->fetchALL();
 //var_dump($category);
 
-return $produit ;
+return $book ;
 
 }
 
 
 
-function searchproduit($keywords){ 
+function searchbook($keywords){ 
     $conn=connect();
      
-      $requette = "SELECT * FROM produit where nom LIKE '$keywords' ";
+      $requette = "SELECT * FROM book where nom LIKE '$keywords' ";
 
       $resultat =$conn->query($requette);
 
-      $produit =$resultat->fetchALL();
-      return $produit;
+      $book =$resultat->fetchALL();
+      return $book;
 
 }
 
-function getproduitbyid ($id){
+function getbookbyid ($id){
     $conn=connect();
 
-    $requette = "SELECT * FROM produit where id=$id  ";
+    $requette = "SELECT * FROM book where id=$id  ";
 
     $resultat = $conn->query($requette);
 
-    $produits = $resultat->fetch();
+    $book = $resultat->fetch();
 
-    return $produits; 
+    return $book; 
 }
 
+function AddUser($data){
+  $conn=connect();
+  $passwordhash=md5($data["password"]);
+  $requette = "INSERT INTO user(nom,prenom,email,password,telephone)  VALUES ('".$data["nom"]."', '".$data["prenom"]."', '".$data["email"]."', '".$passwordhash."', '".$data["telephone"]."')";
+  $resultat = $conn->query($requette);
+  
+
+}
+function ConnectUser($data){
+  $conn=connect();
+  $email=$data['email'];
+  $password=md5($data['password']);
+  $requette ="SELECT * FROM user WHERE email= '$email'AND password='$password'";
+  $resultat = $conn ->query($requette);
+  $user = $resultat ->fetch();
+  return $user;
+
+
+
+
+}
 
 ?>

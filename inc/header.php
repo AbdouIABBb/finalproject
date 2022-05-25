@@ -10,8 +10,8 @@
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Catégories </a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <?php
-                         foreach($category as $categori){
-                             print' <li><a class="dropdown-item" href="#">'.$categori ['nom'].'</a></li> ';
+                         foreach($category as $cat){
+                             print' <li><a class="dropdown-item" href="#">'.$cat['nom'].'</a></li> ';
                          }
 
                          ?>

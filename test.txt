@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 bonjour
+=======
+salam abdo c omar
+saha omar cv
+>>>>>>> 7d930bab6872dfb7a18fbe39a7150b1e37848d4e
+coucou

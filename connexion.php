@@ -10,7 +10,7 @@ $category= getALLcategory();
 if (isset($_POST['login'])){
   $user =ConnectUser($_POST);
   if($user){
-   if (count($user) > 0  ){ 
+   if (is_array($user) && count($user) > 0  ){ 
    $_SESSION ['email']=$user['email'];
    $_SESSION ['nom']=$user['nom'];
    $_SESSION ['prenom']=$user['prenom'];

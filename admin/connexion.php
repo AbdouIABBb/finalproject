@@ -10,7 +10,7 @@ $admin = true;
 if (isset($_POST['login'])){
   $admin =ConnectAdmin($_POST);
   if($admin){
-   if (count($admin) > 0  ){
+   if (is_array($admin) && count($admin) > 0  ){
     session_start(); 
    $_SESSION ['email']=$admin['email'];
    $_SESSION ['nom']=$admin['nom'];

@@ -1,5 +1,7 @@
 <?php 
 session_start();
+include "../../inc/functions.php";
+$category = getALLcategory();
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,12 +14,12 @@ session_start();
     <title>Espace Admin ! </title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/components/modal/#content">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     
 
-    
-
-<link href="../css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link href="../../css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -84,7 +86,7 @@ session_start();
 
     
     <!-- Custom styles for this template -->
-    <link href="../css/dashboard.css" rel="stylesheet">
+    <link href="../../css/dashboard.css" rel="stylesheet">
   </head>
   <body>
     
@@ -113,7 +115,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="category/listecategory.php">
+            <a class="nav-link active" href="#">
               <span data-feather="file" class="align-text-bottom"></span>
               categories
             </a>
@@ -137,7 +139,7 @@ session_start();
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">
+            <a class="nav-link " href="../profile.php">
               <span data-feather="layers" class="align-text-bottom"></span>
               Profile
             </a>
@@ -150,30 +152,122 @@ session_start();
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Profile</h1>
+        <h1 class="h2">Liste des categories</h1>
         <div >
           
-            <?php
+        <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal" >Ajoutter </button>
+          </div> 
+    </div>
+    
+          <div>
+          <table class="table">
+  <thead class="table-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Decription</th>
+      <th scope="col">Date de Creation</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody> 
 
-            echo $_SESSION['nom'];
-            
-            ?>
-          </div>
+  <?php
+      $i=0 ;
+      foreach ($category as $cat ) {
+      $i++ ;
+
+    print ' 
+    <tr>
+      <th scope="row">'.$i.'</th>
+      <td>'.$cat['nom'].'</td>
+      <td> '.$cat['description'].' </td>
+      <td> '.$cat['date_creation'].' </td>
+      <td> 
+      <button type="button" class="btn btn-outline-success">Modifier</button>
+      <button type="button" class="btn btn-outline-danger">Supprimer</button>
+       
+      </td>
+    </tr>
+    ';
+  }
+
+
+  
+  
+
+
+
+?>
+   
+   
+    
+  </tbody>
+</table> 
+  
+
+
+  
+  
+  
+
+
+</div>  
+ 
+
+
 
       
-    </main>
+    </main> 
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+    
+  </div>
+  
+
+</div> 
 
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-
-      <script src="../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-      <script src="../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-      <script src="../js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+      <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+      <script src="../../js/dashboard.js"></script>
   </body>
+
+
+ 
 </html>

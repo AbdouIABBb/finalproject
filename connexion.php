@@ -9,6 +9,10 @@ $user = true;
 $category= getALLcategory();
 if (isset($_POST['login'])){
   $user =ConnectUser($_POST);
+  if (isset($_SESSION['erreur'])){
+    $erreur = $_SESSION['erreur'];
+    unset($_SESSION['erreur']);
+  }
   if($user){
    if (is_array($user) && count($user) > 0  ){ 
    $_SESSION ['email']=$user['email'];
@@ -65,7 +69,7 @@ if (isset($_POST['login'])){
         print "<script>
         Swal.fire({
         title : 'Erreur',
-        text : 'Cordonnes non Valide',
+        text : '$erreur',
         icon : 'error',
         confirmButtonText : 'Ok',
         timer : 2000

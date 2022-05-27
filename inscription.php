@@ -1,10 +1,18 @@
 <?php 
+session_start();
 include "inc/functions.php";
-$showRegistrationAlert = 0;
+$showRegistrationAlert = -1;
 $category= getALLcategory();
 if (!empty($_POST)){
     if(AddUser($_POST)){
         $showRegistrationAlert = 1;
+    }else{
+        if (isset($_SESSION['erreur'])){
+        $erreur = $_SESSION['erreur'];
+        unset($_SESSION['erreur']);
+        $showRegistrationAlert = 0;
+          
+        }   
     }
 }
 
@@ -69,6 +77,17 @@ if (!empty($_POST)){
         })
         </script>
         ";
+        }else if($showRegistrationAlert == 0){
+            print "<script>
+            Swal.fire({
+            title : 'Erreur',
+            text : '$erreur',
+            icon : 'error',
+            confirmButtonText : 'Ok',
+            timer : 2000
+            })
+            </script>
+            ";
         }
     ?>
 

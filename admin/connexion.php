@@ -11,7 +11,8 @@ if (isset($_POST['login'])){
   $admin =ConnectAdmin($_POST);
   if($admin){
    if (is_array($admin) && count($admin) > 0  ){
-    session_start(); 
+   session_start(); 
+   $_SESSION ['id']=$admin['id'];
    $_SESSION ['email']=$admin['email'];
    $_SESSION ['nom']=$admin['nom'];
    $_SESSION ['mp']=$admin['mp'];

@@ -6,7 +6,6 @@ function connect(){
     $DBpassword= "root" ; 
     $DBname= "new-ecommerce" ; 
     
-    
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$DBname", $DBuser , $DBpassword );
         // set the PDO error mode to exception
@@ -18,67 +17,41 @@ function connect(){
 
       return $conn;
 }
+
 function getALLcategory (){
-
-    $conn=connect();
-
-
-$requette ="SELECT * FROM category ";
-
-
-$resultat = $conn ->query($requette);
-
-
-$category = $resultat ->fetchALL();
-//var_dump($category);
-
-return $category ;
-
+  $conn=connect();
+  $requette ="SELECT * FROM category ";
+  $resultat = $conn ->query($requette);
+  $category = $resultat ->fetchALL();
+  return $category ;
 } 
 
 
 function getALLbook(){
-
-    $conn=connect();
-
-
-$requette ="SELECT * FROM book ";
-
-
-$resultat = $conn ->query($requette);
-
-
-$book = $resultat ->fetchALL();
-//var_dump($category);
-
-return $book ;
+  $conn=connect();
+  $requette ="SELECT * FROM book ";
+  $resultat = $conn ->query($requette);
+  $book = $resultat ->fetchALL();
+  return $book ;
 
 }
 
 
 
 function searchbook($keywords){ 
-    $conn=connect();
-     
-      $requette = "SELECT * FROM book where nom LIKE '$keywords' ";
-
-      $resultat =$conn->query($requette);
-
-      $book =$resultat->fetchALL();
-      return $book;
-
+  $conn=connect();
+  $requette = "SELECT * FROM book where nom LIKE '$keywords' ";
+  $resultat =$conn->query($requette);
+  $book =$resultat->fetchALL();
+  return $book;
 }
 
 function getbookbyid ($id){
-    $conn=connect();
-
-    $requette = "SELECT * FROM book where id=$id  ";
-
-    $resultat = $conn->query($requette);
-
-    $book = $resultat->fetch();
-
-    return $book; 
+  $conn=connect();
+  $requette = "SELECT * FROM book where id=$id  ";
+  $resultat = $conn->query($requette);
+  $book = $resultat->fetch();
+  return $book; 
 }
 
 function AddError($error){
@@ -127,11 +100,8 @@ function ConnectUser($data){
   }
   AddError("Email ou mot de passe incorrect");
   return false;
-
-
-
-
 }
+
 function ConnectAdmin ($data){
   $conn=connect();
   $email=$data['email'];

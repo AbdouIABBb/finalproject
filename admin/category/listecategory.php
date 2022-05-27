@@ -88,7 +88,7 @@ $category = getALLcategory();
       <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" href="deconnexion.php">Deconnexion</a>
+          <a class="nav-link px-3" href="../../deconnexion.php">Deconnexion</a>
         </div>
       </div>
     </header>
@@ -145,6 +145,11 @@ $category = getALLcategory();
             </div> 
           </div>
           <div>
+            <?php
+            if (isset($_GET['ajout']) && $_GET['ajout'] == "ok"){
+              print'<div class="alert alert-success">La catégorie a été ajoutée avec succès</div>';
+            }
+            ?>
             <table class="table">
               <thead class="table-light">
                 <tr>

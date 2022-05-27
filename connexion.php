@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['nom'])){
-  header('location:profile.php');
+  header('location:index.php');
 
  }
 include "inc/functions.php";
@@ -20,7 +20,7 @@ if (isset($_POST['login'])){
    $_SESSION ['prenom']=$user['prenom'];
    $_SESSION ['telephone']=$user['telephone'];
 
-   header('location:profile.php');
+   header('location:index.php');
    }
   }
 }

@@ -4,17 +4,10 @@ include "inc/functions.php";
 $category= getALLcategory();
 
 if(!empty($_POST)) {
-
-  
-   $book = searchbook($_POST['search']);
-
+  $book = searchbook($_POST['search']);
 }else{
-    $book= getALLbook();
+  $book= getALLbook();
 }
-
-
-
-
 ?>
 
 

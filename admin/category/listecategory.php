@@ -147,7 +147,12 @@ $category = getALLcategory();
           <div>
             <?php
             if (isset($_GET['ajout']) && $_GET['ajout'] == "ok"){
-              print'<div class="alert alert-success">La catégorie a été ajoutée avec succès</div>';
+              print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
+            }
+            ?>
+            <?php
+            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
+              print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
             }
             ?>
             <table class="table">
@@ -170,9 +175,8 @@ $category = getALLcategory();
                         <td>'.$cat['nom'].'</td>
                         <td> '.$cat['description'].' </td>
                         <td> 
-                        <button type="button" class="btn btn-outline-success">Modifier</button>
-                        <button type="button" class="btn btn-outline-danger">Supprimer</button>
-                         
+                          <a href="modifiercategory.php" class="btn btn-outline-success">Modifier</a>
+                          <a href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-outline-danger">Supprimer</a>
                         </td>
                       </tr>';
                   } 

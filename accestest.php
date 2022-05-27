@@ -1,7 +1,7 @@
 <?php
 $servername= "localhost";
 $DBuser= "root" ; 
-$DBpassword= "root" ; 
+$DBpassword= "" ; 
 $DBname= "new-ecommerce" ; 
 
 

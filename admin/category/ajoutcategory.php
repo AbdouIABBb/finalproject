@@ -8,6 +8,6 @@ $requette = "INSERT INTO category (nom,description) VALUES ('$nom', '$descriptio
 $resultat = $conn ->query($requette);
 
 if ($resultat){
-    header('location:listecategory.php?ajout=ok');
+    header('location:listecategory.php?add=ok');
 }
 ?>

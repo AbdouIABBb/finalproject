@@ -146,13 +146,18 @@ $category = getALLcategory();
           </div>
           <div>
             <?php
-            if (isset($_GET['ajout']) && $_GET['ajout'] == "ok"){
+            if (isset($_GET['add']) && $_GET['add'] == "ok"){
               print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
             }
             ?>
             <?php
             if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
               print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
+            }
+            ?>
+            <?php
+            if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
+              print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
             }
             ?>
             <table class="table">
@@ -175,7 +180,7 @@ $category = getALLcategory();
                         <td>'.$cat['nom'].'</td>
                         <td> '.$cat['description'].' </td>
                         <td> 
-                          <a href="modifiercategory.php" class="btn btn-outline-success">Modifier</a>
+                          <a data-bs-toggle="modal" data-bs-target="#editModal'.$cat['id'].'" class="btn btn-outline-success">Modifier</a>
                           <a href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-outline-danger">Supprimer</a>
                         </td>
                       </tr>';
@@ -185,7 +190,7 @@ $category = getALLcategory();
             </table>  
           </div>  
         </main> 
-        <!-- Modal -->
+        <!-- Modal ajout-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -210,6 +215,35 @@ $category = getALLcategory();
             </div>
           </div>
         </div>
+        <?php
+        foreach ($category as $index=> $cat ) { ?>
+          <!-- Modal modification-->
+          <div class="modal fade" id="editModal<?php echo $cat['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modification d'une catégorie</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="modifiercategory.php" method="POST">
+                                <input type="hidden" value="<?php echo $cat['id']; ?>" name="idc" />
+                                <div class="form-group">
+                                  <input type="text" name="nom" class="form-control" value="<?php echo $cat['nom']; ?>"placeholder="nom de la catégorie">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                  <textarea name="description" class="form-control" placeholder="description de la catégorie"><?php echo $cat['description']; ?></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary">Modifier</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        <?php  } ?>
       </div>
     </div> 
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

@@ -2,6 +2,7 @@
 session_start();
 include "../../inc/functions.php";
 $category = getALLcategory();
+$user = getALLusers ();
 ?>
 <!doctype html>
 <html lang="en">
@@ -105,7 +106,7 @@ $category = getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link " href="#">
                   <span data-feather="file" class="align-text-bottom"></span>
                   catégories
                 </a>
@@ -117,7 +118,7 @@ $category = getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link active" href="#">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
@@ -139,49 +140,45 @@ $category = getALLcategory();
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Liste des categories</h1>
-            <div >
-               <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary ">Ajouter </button>
-            </div> 
+            <h1 class="h2">Liste des utilisateurs</h1>
+             
           </div>
           <div>
-            <?php
-            if (isset($_GET['add']) && $_GET['add'] == "ok"){
-              print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
-            }
-            ?>
+            
             <?php
             if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-              print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
+              print'<div class="alert alert-success">Utilisateur supprimé avec succès</div>';
             }
             ?>
-            <?php
-            if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-              print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
-            }
-            ?>
+            
             <table class="table">
               <thead class="table-light">
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Nom</th>
-                  <th scope="col">Decription</th>
+                  <th scope="col">prenom</th>
+                  <th scope="col">Numero</th>
+                  <th scope="col">Email</th>
+
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody> 
                 <?php
                   $i=0 ;
-                  foreach ($category as $cat ) {
+                  foreach ($user as $u ) {
                     $i++ ;
                     print ' 
                       <tr>
                         <th scope="row">'.$i.'</th>
-                        <td>'.$cat['nom'].'</td>
-                        <td> '.$cat['description'].' </td>
+                        <td>'.$u['nom'].'</td>
+                        <td> '.$u['prenom'].' </td>
+                        <td> '.$u['telephone'].' </td>
+                        <td> '.$u['email'].' </td>
+
                         <td> 
-                          <a data-bs-toggle="modal" data-bs-target="#editModal'.$cat['id'].'" class="btn btn-outline-success">Modifier</a>
-                          <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                          
+                          <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
                         </td>
                       </tr>';
                   } 

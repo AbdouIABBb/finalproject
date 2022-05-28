@@ -113,6 +113,16 @@ function ConnectAdmin ($data){
     return $admin;
   }
   return false;
+} 
+
+
+
+function getALLusers (){
+  $conn=connect();
+  $requette ="SELECT * FROM user ";
+  $resultat = $conn ->query($requette);
+  $user = $resultat ->fetchALL();
+  return $user ;
 }
 
 function uploadFile($file){

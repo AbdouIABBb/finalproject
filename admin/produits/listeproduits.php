@@ -118,7 +118,7 @@ $category= getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../visiteur/listeusers.php">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
@@ -199,7 +199,7 @@ $category= getALLcategory();
                     <td><?php echo $livre['image']; ?></td>
                     <td> 
                           <a data-bs-toggle="modal" class="btn btn-outline-success">Modifier</a>
-                          <a href="#" class="btn btn-outline-danger">Supprimer</a>
+                          <a href="supprimer.php" class="btn btn-outline-danger">Supprimer</a>
                         </td>
                   </tr>
                   <?php

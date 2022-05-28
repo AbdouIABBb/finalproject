@@ -1,7 +1,8 @@
 <?php 
 session_start();
 include "../../inc/functions.php";
-$category = getALLcategory();
+$livres = getALLbook();
+$category= getALLcategory();
 ?>
 <!doctype html>
 <html lang="en">
@@ -145,9 +146,11 @@ $category = getALLcategory();
             </div> 
           </div>
           <div>
-            
-            
-
+          <?php
+            if (isset($_GET['add']) && $_GET['add'] == "ok"){
+              print'<div class="alert alert-success">Produit ajoutée avec succès</div>';
+            }
+            ?>
 
             <table class="table">
               <thead class="table-light">
@@ -155,23 +158,29 @@ $category = getALLcategory();
                   <th scope="col">#</th>
                   <th scope="col">Nom</th>
                   <th scope="col">Decription</th>
-                  
-                  <th scope="col">Nom</th>
-                  <th scope="col">Decription</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Image</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody> 
-
-
                 <?php
-                  $i=0 ;
-                  
+                foreach ($livres as $livre) {
+                  ?>
+                  <tr>
+                    <th scope="row"><?php echo $livre['id']; ?></th>
+                    <td><?php echo $livre['nom']; ?></td>
+                    <td><?php echo $livre['descrition']; ?></td>
+                    <td><?php echo $livre['prix']; ?></td>
+                    <td><?php echo $livre['image']; ?></td>
+                    <td> 
+                          <a data-bs-toggle="modal" class="btn btn-outline-success">Modifier</a>
+                          <a href="#" class="btn btn-outline-danger">Supprimer</a>
+                        </td>
+                  </tr>
+                  <?php
+                }
                 ?>
-
-
-
               </tbody>
             </table>  
           </div>  
@@ -185,7 +194,7 @@ $category = getALLcategory();
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form action="ajout.php" method="POST" enctype="multipart/form-datas">
+                <form action="ajout.php" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                     <input type="text" name="nom" class="form-control" placeholder="nom de livre">
                   </div>

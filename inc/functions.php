@@ -115,4 +115,30 @@ function ConnectAdmin ($data){
   return false;
 }
 
+function uploadFile($file){
+  $fileName = $file['name'];
+  $fileTmpName = $file['tmp_name'];
+  $fileSize = $file['size'];
+  $fileError = $file['error'];
+  $fileExt = explode('.', $fileName);
+  $fileActualExt = strtolower(end($fileExt));
+  $allowed = array('png','jpg','jpeg');
+  if(in_array($fileActualExt, $allowed)){
+      if($fileError == 0){
+          if($fileSize < 5000000){
+              $fileNameNew = uniqid('', true).".".$fileActualExt;
+              $fileDestination = '../../images/'.$fileNameNew;
+              move_uploaded_file($fileTmpName, $fileDestination);
+              return $fileNameNew;
+          }else{
+              return false;
+          }
+      }else{
+          return false;
+      }
+  }else{
+      return false;
+  }
+}
+
 ?>

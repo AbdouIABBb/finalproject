@@ -1,24 +1,15 @@
 <?php
+include "../../inc/functions.php";
 
 $nom = $_POST['nom'];
 $prix = $_POST['prix'];
 $createur = $_POST['createur'];
 $description = $_POST['description'];
 $category = $_POST['category'];
-
-$target_dir = "../../images/";
-$target_file = $target_dir . basename($_FILES["image"]["name"]);
-
-if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
-  } else {
-    echo "Sorry, there was an error uploading your file.";
-  }
-
-
-
-
-
-
+$image = uploadFile($_FILES['image']);
+$conn = connect();
+$requette = "INSERT INTO book (nom,descrition,prix,image,category,createur) VALUES ('$nom', '$description','$prix','$image','$category','$createur')";
+$resultat = $conn ->query($requette);
+header("location: listeproduits.php?add=ok");
 
 ?>

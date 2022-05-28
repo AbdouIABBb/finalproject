@@ -111,7 +111,7 @@ $category = getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../produits/listeproduits.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                   Livres
                 </a>

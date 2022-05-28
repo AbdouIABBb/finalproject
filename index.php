@@ -22,7 +22,7 @@ if(!empty($_POST)) {
   </head>
   <body>
   	<?php include "inc/header.php"; ?>
-    <div class="row col-12 mt-4 p-5">
+    <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">
         <?php
         foreach($book as $b ){
           print ' <div class="row col-3"> 

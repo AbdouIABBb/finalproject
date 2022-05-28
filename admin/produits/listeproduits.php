@@ -146,11 +146,35 @@ $category= getALLcategory();
             </div> 
           </div>
           <div>
-          <?php
+          
+
+
+          <div>
+            <?php
             if (isset($_GET['add']) && $_GET['add'] == "ok"){
-              print'<div class="alert alert-success">Produit ajoutée avec succès</div>';
+              print'<div class="alert alert-success">Livre ajouté avec succès</div>';
             }
             ?>
+            <?php
+            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
+              print'<div class="alert alert-success">Livre supprimé avec succès</div>';
+            }
+            ?>
+            <?php
+            if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
+              print'<div class="alert alert-success">Livre modifié avec succès</div>';
+            }
+            ?>
+
+            <?php
+            if (isset($_GET['erreur']) && $_GET['erreur'] == "duplicate" ){
+              print'<div class="alert alert-danger">nom de livre deja exist</div>';
+            }
+            ?>
+
+            
+            
+
 
             <table class="table">
               <thead class="table-light">

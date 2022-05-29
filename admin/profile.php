@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if(!isset($_SESSION['role'])){
+  header("Location: ../index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -110,6 +113,12 @@ session_start();
                 <a class="nav-link" href="#">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                   Livres
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="stocks/listestock.php">
+                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                  Stock
                 </a>
               </li>
               <li class="nav-item">

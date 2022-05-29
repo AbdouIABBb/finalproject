@@ -16,6 +16,7 @@ if (isset($_POST['login'])){
    $_SESSION ['email']=$admin['email'];
    $_SESSION ['nom']=$admin['nom'];
    $_SESSION ['mp']=$admin['mp'];
+   $_SESSION ['role']="admin";
 
    header('location:profile.php');
    }

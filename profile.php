@@ -1,5 +1,7 @@
 <?php 
   session_start();
+  include "inc/functions.php";
+  $category= getALLcategory();
   if(!isset($_SESSION['nom'])){
     header('location:connexion.php');
   }
@@ -18,7 +20,7 @@
       include "inc/header.php";
       ?>
       <div class="container">
-        <h1 > Bienvenue <span class="text-primary"><?php echo $_SESSION['nom']." ". $_SESSION['prenom'];?> </span><h1>   
+        <h1 > Bienvenue <span class="text-primary"><?php echo $_SESSION['nom']." ".$_SESSION['prenom'];?> </span><h1>   
         <h2> Email:<?php echo $_SESSION['email'];?></h2>
       </div>
       <?php  include"inc/footer.php"?>

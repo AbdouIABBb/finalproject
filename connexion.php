@@ -19,7 +19,6 @@ if (isset($_POST['login'])){
    $_SESSION ['nom']=$user['nom'];
    $_SESSION ['prenom']=$user['prenom'];
    $_SESSION ['telephone']=$user['telephone'];
-
    header('location:index.php');
    }
   }

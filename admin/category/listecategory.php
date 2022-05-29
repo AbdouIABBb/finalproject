@@ -117,6 +117,12 @@ $category = getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="stocks/listestock.php">
+                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                  Stock
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
@@ -205,6 +211,8 @@ $category = getALLcategory();
                   </div>
                   <br>
                   <div class="form-group">
+                    <textarea name="description" class="form-control" placeholder="description de la catégorie"></textarea>
+                  </div>
                     <textarea name="description" class="form-control" placeholder="description de la catégorie"></textarea>
                   </div>
                   <div class="modal-footer">

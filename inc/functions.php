@@ -159,4 +159,12 @@ function getstock()
   return $stock ; 
 }
 
+function getBooksByCategory($id){
+  $conn=connect();
+  $requette ="SELECT * FROM book where category='$id'";
+  $resultat = $conn ->query($requette);
+  $books = $resultat ->fetchALL();
+  return $books ; 
+}
+
 ?>

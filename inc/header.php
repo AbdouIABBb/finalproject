@@ -12,7 +12,7 @@
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <?php
                          foreach($category as $cat){
-                             print' <li><a class="dropdown-item" href="#">'.$cat['nom'].'</a></li> ';
+                             print' <li><a class="dropdown-item" href="?cat='.$cat['id'].'">'.$cat['nom'].'</a></li> ';
                          }
 
                          ?>

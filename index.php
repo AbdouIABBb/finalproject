@@ -3,7 +3,10 @@ session_start();
 include "inc/functions.php";
 $category= getALLcategory();
 
-if(!empty($_POST)) {
+if(isset($_GET['cat'])){
+  $idcat = $_GET['cat'];
+  $book = getBooksByCategory($idcat);
+}else if(!empty($_POST)) {
   $book = searchbook($_POST['search']);
 }else{
   $book= getALLbook();
@@ -24,18 +27,34 @@ if(!empty($_POST)) {
   	<?php include "inc/header.php"; ?>
     <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">
         <?php
-        foreach($book as $b ){
-          print ' <div class="row col-3"> 
-                    <div class="card" style="width: 18rem;">
-                        <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"> '.$b['nom'].' </h5>
-                            <p class="card-text">'.$b['descrition'].'</p>
-                            <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
-                        </div>
-                    </div>
-                  </div>';
-
+        if(!isset($_GET['cat'])){
+          foreach($book as $b ){
+            print ' <div class="row col-3"> 
+                      <div class="card" style="width: 18rem;">
+                          <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <h5 class="card-title"> '.$b['nom'].' </h5>
+                              <p class="card-text">'.$b['descrition'].'</p>
+                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
+                          </div>
+                      </div>
+                    </div>';
+  
+          }
+        }else{
+          foreach($book as $b ){
+            print ' <div class="row col-3"> 
+                      <div class="card" style="width: 18rem;">
+                          <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
+                          <div class="card-body">
+                              <h5 class="card-title"> '.$b['nom'].' </h5>
+                              <p class="card-text">'.$b['descrition'].'</p>
+                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
+                          </div>
+                      </div>
+                    </div>';
+  
+          }
         }
       ?>
     </div>

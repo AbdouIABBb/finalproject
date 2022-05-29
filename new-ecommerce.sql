@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : ven. 27 mai 2022 à 16:23
--- Version du serveur : 5.7.24
--- Version de PHP : 7.4.19
+-- Hôte : 127.0.0.1
+-- Généré le : dim. 29 mai 2022 à 22:28
+-- Version du serveur : 10.4.20-MariaDB
+-- Version de PHP : 7.3.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,7 +66,9 @@ CREATE TABLE `book` (
 INSERT INTO `book` (`id`, `nom`, `descrition`, `prix`, `image`, `category`, `createur`, `date_creation`, `date_modification`) VALUES
 (1, 'livre 1', 'description livre 1', 2000, '3.png', 0, 0, '0000-00-00', '0000-00-00'),
 (2, 'livre 2', 'description livre 1', 1000, '2.png', 0, 0, '0000-00-00', '0000-00-00'),
-(3, 'livre 3', 'description 3', 2000, '4.png\r\n', 2, 3, '2022-05-24', '2022-05-25');
+(3, 'livre 3', 'description 3', 2000, '4.png\r\n', 2, 3, '2022-05-24', '2022-05-25'),
+(4, 'livre 2', 'blablabla', 3000, '62933b1fef0cd3.39377039.jpg', 4, 2, '0000-00-00', '0000-00-00'),
+(5, 'livre 5', 'blablablabla', 1200, '62934a27184fe5.25167637.png', 4, 0, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -77,21 +79,53 @@ INSERT INTO `book` (`id`, `nom`, `descrition`, `prix`, `image`, `category`, `cre
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `createur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `category`
 --
 
-INSERT INTO `category` (`id`, `nom`, `description`) VALUES
-(5, 'roman', 'roman contemporain '),
-(7, 'littÃ©rature', 'livres littÃ©raires'),
-(8, 'cat1', 'desc 1'),
-(10, 'categorie 3', 'description 3'),
-(11, 'cat 4', ''),
-(14, 'cat 7', ''),
-(16, 'cat 10', 'description 10');
+INSERT INTO `category` (`id`, `nom`, `description`, `createur`) VALUES
+(4, 'cat1', '111111', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+CREATE TABLE `commandes` (
+  `id` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
+  `total` float NOT NULL,
+  `panier` int(11) NOT NULL,
+  `date_creation` date NOT NULL,
+  `produit` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `stock`
+--
+
+CREATE TABLE `stock` (
+  `id` int(11) NOT NULL,
+  `produit` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
+  `createur` int(11) NOT NULL,
+  `date_creation` date NOT NULL,
+  `date_modification` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `stock`
+--
+
+INSERT INTO `stock` (`id`, `produit`, `quantite`, `createur`, `date_creation`, `date_modification`) VALUES
+(1, 5, 23, 0, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -105,7 +139,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `etat` int(11) NOT NULL DEFAULT '0',
+  `etat` int(11) NOT NULL DEFAULT 0,
   `telephone` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -114,8 +148,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `nom`, `prenom`, `etat`, `telephone`) VALUES
-(48, 'root@gmail.com', 'f82259cc79e570a56713baae63c81d64', 'root', 'root', 0, '0505050505'),
-(49, 'user@gmail.com', '5cc32e366c87c4cb49e4309b75f57d64', 'user', 'user', 0, '0505050505');
+(40, 'Abdou@gmail.com', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'aaaaaaaaaaa', 'aaaa', 0, '0999975444'),
+(41, 'zahra18@gmail.com', '01e50c681c0b05ff22686b3e0f7290d3', 'zahra', 'taleb', 0, '0999975444'),
+(42, 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 0, '2359235'),
+(43, 'farid@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'farid', 'kara', 0, '0987654321');
 
 --
 -- Index pour les tables déchargées
@@ -140,6 +176,18 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `stock`
+--
+ALTER TABLE `stock`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
@@ -160,19 +208,31 @@ ALTER TABLE `administrateur`
 -- AUTO_INCREMENT pour la table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `stock`
+--
+ALTER TABLE `stock`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,5 @@
 <?php
-$iduser = $_GET['idu'];
+$iduser = $_GET['idc'];
 
 
 include "../../inc/functions.php";

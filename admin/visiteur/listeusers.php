@@ -178,7 +178,7 @@ $user = getALLusers ();
 
                         <td> 
                           
-                          <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                          <a onClick="return popUpDeleteCategory()" href="supprimer.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
                         </td>
                       </tr>';
                   } 
@@ -251,7 +251,7 @@ $user = getALLusers ();
 
     <script > 
     function popUpDeleteCategory() {
-      return confirm("Voulez-vous vraiment supprimer cette categorie ?");
+      return confirm("Voulez-vous vraiment supprimer l'utilisateur ?");
       
     }
   </script>

@@ -149,18 +149,8 @@ $stock = getstock();
           </div>
           <div>
             <?php
-            if (isset($_GET['add']) && $_GET['add'] == "ok"){
-              print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
-            }
-            ?>
-            <?php
-            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-              print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
-            }
-            ?>
-            <?php
             if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-              print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
+              print'<div class="alert alert-success">Quantite modifiée avec succès</div>';
             }
             ?>
             <table class="table">
@@ -195,6 +185,32 @@ $stock = getstock();
         
       </div>
     </div> 
+    <?php
+        foreach ($stock as $index=> $stock ) { ?>
+          <!-- Modal modification-->
+          <div class="modal fade" id="editModal<?php echo $stock['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Modifier stock du <span class="text-primary"><?php echo $stock['nom'];?> </span></h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="modifierstock.php" method="POST">
+                                <input type="hidden" value="<?php echo $stock['id']; ?>" name="idstock" />
+                                <div class="form-group">
+                                  <input type="number" step= "1" name="quantite" class="form-control" value="<?php echo $stock['quantite']; ?>"placeholder="stock du produit ...">
+                                </div>
+                                <br>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary">Modifier</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+        <?php  } ?>
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

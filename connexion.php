@@ -55,6 +55,7 @@ if (isset($_POST['login'])){
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary" name="login">Se connecter</button>
+            <a href="reset_password.php">reset password</a>
         </form>
     </div>
     <?php  include"inc/footer.php"?>

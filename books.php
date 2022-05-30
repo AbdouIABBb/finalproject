@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 include "inc/functions.php";
 $category= getALLcategory();
 if(isset($_GET['id'])) {
@@ -22,6 +23,12 @@ if(isset($_GET['id'])) {
     <div class="row col-7 p-5">
       <div class="card" >
           <div class="card-body">
+               <?php
+                  if (isset($_SESSION['error'])){
+                      print'<div class="alert alert-danger">'.$_SESSION["error"].'</div>';
+                      unset($_SESSION['error']);
+                  }
+                ?>
               <h5 class="card-title"> <?php echo $book['nom'] ?> </h5>
               <p class="card-text">Auteur : <?php echo $book['auteur'] ?> </p>
               
@@ -51,7 +58,7 @@ if(isset($_GET['id'])) {
         <br>
         <form class="d-flex" action="actions/commander.php" method="POST">
             <input type="hidden"  value="<?php echo $book['id'] ?>"name="produit"></input>
-            <input type="number" class="row col-3 p-2"  name="quantite" step="1" placeholder="quantite du produit"></input>
+            <input type="number" class="row col-3 p-2" min="1" name="quantite" step="1" placeholder="quantite du produit"></input>
             <br>
             <button type ="submit"  class="btn-btn-primary btn btn-success ">Ajouter au panier </button>
         </form>

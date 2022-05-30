@@ -21,7 +21,11 @@ session_start();
 // //var_dump($_POST);
  $id_produit = $_POST['produit'];
  $quantite = $_POST['quantite'];
-
+ if(empty($quantite)){
+     $_SESSION['error'] = "veuillez saisir une quantité";
+     header("Location: ../books.php?id=$id_produit");
+     die();
+ }
 
 
  $requette ="SELECT prix,nom FROM book where id='$id_produit' ";

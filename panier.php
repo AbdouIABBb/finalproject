@@ -1,7 +1,8 @@
 <?php 
 session_start();
 include "inc/functions.php";
-
+//var_dump($_SESSION['panier']);
+$total = $_SESSION['panier'][1] ;
 $category= getALLcategory();
 
 if(isset($_GET['cat'])){
@@ -60,8 +61,8 @@ if(isset($_SESSION['panier'])){
                             <th scope="row">'.($index+1).'</th>
                             <td>'.$commande[5].'</td>
                             <td>'.$commande[0].'  pieces</td>
-                            <td>'.$commande[1].'  $</td>
-                            <td> <button class="btn btn-danger">Supprimer</button>   </td>
+                            <td>'.$commande[1].'  DA</td>
+                            <td> <a href="actions/enlverproduitpanier.php?='.$index.'"  class="btn btn-danger">Supprimer </a>   </td>
                         </tr>;
                         ';
                     }
@@ -71,9 +72,14 @@ if(isset($_SESSION['panier'])){
                         
                     </tbody>
                     </table>
-
-
+            <div class="text-end mt-3 "> 
+                <h3> Total a payer : <?php echo $total ;  ?> DA </h3>
+                <hr/>
     <button class="btn btn-success" style="width:100px"> Valider </button>
+
+
+                </div>
+
 
     </div>
      <?php  include"inc/footer.php"?>

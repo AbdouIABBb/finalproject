@@ -1,12 +1,12 @@
 <?php 
 
 session_start();
+//test user s'il est connecté
+ if(!isset($_SESSION ['nom'])){
 
-// if(!isset($_SESSION ['nom'])){
-
-//     header('location:../connexion.php');
-//     exit();
-// }
+    header('location:../connexion.php');
+    exit();
+ }
 
  include"../inc/functions.php" ;
  $conn=connect();

@@ -32,7 +32,7 @@ if(isset($_GET['id'])) {
 
 
             <?php
-            foreach($category as $index =>$cat ) {
+            foreach($category as $index => $cat ) {
               if($cat['id']== $book['category']){
                 
                 print '<li class="list-group-item">'.$cat['nom'].'</li>  ';
@@ -44,16 +44,18 @@ if(isset($_GET['id'])) {
             
           </ul>
           <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+
+          <form action="actions/commander.php" method="POST">
+            <input type="hidden" value=" <?php echo $book['id'] ?>" name="produit"></input>
+            <input type="number" class ="form-control" name="quantite" step="1" placeholder="quantite du produit"></input>
+            <br>
+            <button type ="submit" class="btn-btn-primary">Ajouter au panier </button>
+            
+        </form>
           </div>
       </div>
       <div>
-        <form action="actions/commander.php" method="POST">
-            <input type="hidden" value="<?php echo $book['id'] ?>"name="produit"></input>
-            <input type="number" class ="form-control" name="quantite" step="1" placeholder="quantite du produit"></input>
-            <button type ="submit" class="btn-btn-primary">Ajouter au panier </button>
-        </form>
+        
       </div>
     </div>
     <div class="row col-5 p-5">

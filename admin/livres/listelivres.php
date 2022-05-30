@@ -265,30 +265,30 @@ $category = getALLcategory();
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="modifierlivre.php" method="POST">
+                              <form action="modifierlivre.php" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" value="<?php echo $livre['id']; ?>" name="idl" />
                                 <div class="form-group">
-                                  <input type="text" name="nom" class="form-control" value="<?php echo $livre['nom']; ?>"placeholder="nom du livre">
+                                  <input type="text" name="nom" class="form-control" placeholder="nom du livre">
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                  <input type="text" name="auteur" class="form-control" placeholder="auteur du livre" value="<?php echo $livre['auteur']; ?>">
+                                  <input type="text" name="auteur" class="form-control" placeholder="auteur du livre">
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                  <input type="number" name="prix" class="form-control" value="<?php echo $livre['prix']; ?>"placeholder="prix du livre">
+                                  <input type="number" name="prix" class="form-control" placeholder="prix du livre">
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                  <input type="file" name="image" class="form-control" value="<?php echo $livre['image']; ?>">
+                                  <input type="file"  name="image" class="form-control" >
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                  <input type="number" name="quantite" class="form-control" value="<?php echo $livre['quantite']; ?>">
+                                  <input type="number" name="quantite" class="form-control">
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <select name="category" class="form-control" value="<?php echo $livre['category']; ?>">
+                                    <select name="category" class="form-control">
                                         <?php 
                                         foreach($category as $index => $c){
                                             print'<option value="'.$c['id'].'"> '.$c['nom']. '</option>';

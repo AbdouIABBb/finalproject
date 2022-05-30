@@ -3,10 +3,10 @@
 <?php
 include "../../inc/functions.php";
 
-$nom = $_POST['nom'];
+$nom = htmlentities($_POST['nom'], ENT_QUOTES, "UTF-8");
 $prix = $_POST['prix'];
 $auteur = $_POST['auteur'];
-$resume = $_POST['resume'];
+$resume = htmlentities($_POST['resume'], ENT_QUOTES, "UTF-8");
 $category = $_POST['category'];
 $quantite = $_POST['quantite'];
 $image = uploadFile($_FILES['image']);

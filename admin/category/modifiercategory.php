@@ -1,7 +1,7 @@
 <?php
 $id = $_POST['idc'];
-$nom = $_POST['nom'];
-$description = $_POST['description'];
+$nom = htmlentities($_POST['nom'], ENT_QUOTES, "UTF-8");
+$description = htmlentities($_POST['description'], ENT_QUOTES, "UTF-8");
 
 include "../../inc/functions.php";
 $conn = connect();

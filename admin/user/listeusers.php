@@ -106,19 +106,19 @@ $user = getALLusers ();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="../category/listecategory.php">
                   <span data-feather="file" class="align-text-bottom"></span>
-                  catégories
+                  Catégories
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../produits/listeproduits.php">
+                <a class="nav-link" href="../livres/listelivres.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                   Livres
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="listeusers.php">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
@@ -178,7 +178,7 @@ $user = getALLusers ();
 
                         <td> 
                           
-                          <a onClick="return popUpDeleteCategory()" href="supprimer.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                          <a onClick="return popUpDeleteCategory()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
                         </td>
                       </tr>';
                   } 
@@ -187,60 +187,6 @@ $user = getALLusers ();
             </table>  
           </div>  
         </main> 
-        <!-- Modal ajout-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ajout d'une catégorie</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <form action="ajoutcategory.php" method="POST">
-                  <div class="form-group">
-                    <input type="text" name="nom" class="form-control" placeholder="nom de la catégorie">
-                  </div>
-                  <br>
-                  <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="description de la catégorie"></textarea>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <?php
-        foreach ($category as $index=> $cat ) { ?>
-          <!-- Modal modification-->
-          <div class="modal fade" id="editModal<?php echo $cat['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modification d'une catégorie</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <form action="modifiercategory.php" method="POST">
-                                <input type="hidden" value="<?php echo $cat['id']; ?>" name="idc" />
-                                <div class="form-group">
-                                  <input type="text" name="nom" class="form-control" value="<?php echo $cat['nom']; ?>"placeholder="nom de la catégorie">
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                  <textarea name="description" class="form-control" placeholder="description de la catégorie"><?php echo $cat['description']; ?></textarea>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="submit" class="btn btn-primary">Modifier</button>
-                                </div>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-        <?php  } ?>
       </div>
     </div> 
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

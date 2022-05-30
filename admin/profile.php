@@ -116,13 +116,7 @@ if(!isset($_SESSION['role'])){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="stocks/listestock.php">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Stock
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="user/listeusers.php">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>

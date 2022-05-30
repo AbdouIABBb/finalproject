@@ -3,7 +3,6 @@ session_start();
 include "../../inc/functions.php";
 $livres = getALLbook();
 $category = getALLcategory();
-$stock = getstock();
 ?>
 <!doctype html>
 <html lang="en">
@@ -109,7 +108,7 @@ $stock = getstock();
               <li class="nav-item">
                 <a class="nav-link" href="../category/listecategory.php">
                   <span data-feather="file" class="align-text-bottom"></span>
-                  catégories
+                  Catégories
                 </a>
               </li>
               <li class="nav-item">
@@ -119,13 +118,7 @@ $stock = getstock();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../stocks/listestock.php">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Stock
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="../user/listeusers.php">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
@@ -179,9 +172,10 @@ $stock = getstock();
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Decription</th>
+                        <th scope="col">Auteur(s)</th>
                         <th scope="col">Prix</th>
                         <th scope="col">Image</th>
+                        <th scope="col">Quantité</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -194,9 +188,10 @@ $stock = getstock();
                             <tr>
                                 <th scope="row">'.$i.'</th>
                                 <td>'.$livre['nom'].'</td>
-                                <td>'.$livre['description'].'</td>
+                                <td>'.$livre['auteur'].'</td>
                                 <td>'.$livre['prix'].'</td>
                                 <td>'.$livre['image'].'</td>
+                                <td>'.$livre['quantite'].'</td>
                                 <td> 
                                     <a data-bs-target="#editModal'.$livre['id'].'" data-bs-toggle="modal" class="btn btn-outline-success">Modifier</a>
                                     <a onClick="return popUpDeletelivre()" href= "supprimerlivre.php?idl='.$livre['id'].'" class="btn btn-outline-danger">Supprimer</a>
@@ -219,16 +214,24 @@ $stock = getstock();
               <div class="modal-body">
                     <form action="ajoutlivre.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <input type="text" name="nom" class="form-control" placeholder="nom de livre">
+                            <input type="text" name="nom" class="form-control" placeholder="Intitulé du livre">
                         </div>
                         <br>
                         <div class="form-group">
-                            <input type="number" step="0;01" name="prix" class="form-control" placeholder="Prix">
+                            <input type ="text" name="auteur" class="form-control" placeholder="Auteur(s)">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" step="0;01" name="prix" class="form-control" placeholder="Le prix">
                         </div>
                         <br>
                         <div class="form-group">
                             <input type="file"  name="image" class="form-control" >
                         </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" name="quantite" class="form-control" placeholder="La quantité">
+                        </div> 
                         <br>
                         <div class="form-group ">
                             <select name="category" class="form-control" >
@@ -241,12 +244,8 @@ $stock = getstock();
                         </div >
                         <br>
                         <div class="form-group">
-                            <input type="number" name="quantite" class="form-control" placeholder="saisissez la quantite du livre">
-                        </div> 
-                        <br> 
-                        <div class="form-group">
-                            <textarea name="description" class="form-control" placeholder="description du livre"></textarea>
-                        </div> 
+                            <textarea name="resume" class="form form-control" placeholder="Le resumé du livre"></textarea>
+                        </div>  
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </div>
@@ -273,11 +272,19 @@ $stock = getstock();
                                 </div>
                                 <br>
                                 <div class="form-group">
+                                  <input type="text" name="auteur" class="form-control" placeholder="auteur du livre" value="<?php echo $livre['auteur']; ?>">
+                                </div>
+                                <br>
+                                <div class="form-group">
                                   <input type="number" name="prix" class="form-control" value="<?php echo $livre['prix']; ?>"placeholder="prix du livre">
                                 </div>
                                 <br>
                                 <div class="form-group">
                                   <input type="file" name="image" class="form-control" value="<?php echo $livre['image']; ?>">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                  <input type="number" name="quantite" class="form-control" value="<?php echo $livre['quantite']; ?>">
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -291,11 +298,7 @@ $stock = getstock();
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                  <input type="number" name="quantite" class="form-control" value="<?php echo $stock['quantite']; ?>"placeholder="quantité du livre">
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                  <textarea name="description" class="form-control" placeholder="description du livre"><?php echo $livre['description']; ?></textarea>
+                                  <textarea name="resume" type="text" class="form form-control" ><?php echo $livre['resume']; ?></textarea>
                                 </div>
                                 <br>
                                 <div class="modal-footer">

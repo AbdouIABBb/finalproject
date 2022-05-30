@@ -150,14 +150,7 @@ function uploadFile($file){
       return false;
   }
 }
-function getstock()
-{
-  $conn=connect();
-  $requette ="SELECT s.id,b.nom,s.quantite FROM book b,stock s where b.id= s.produit";
-  $resultat = $conn ->query($requette);
-  $stock = $resultat ->fetchALL();
-  return $stock ; 
-}
+
 
 function getBooksByCategory($id){
   $conn=connect();

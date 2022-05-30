@@ -23,36 +23,29 @@ if(isset($_GET['id'])) {
       <div class="card" >
           <div class="card-body">
               <h5 class="card-title"> <?php echo $book['nom'] ?> </h5>
-              <p class="card-text"><?php echo $book['description'] ?> </p>
+              <p class="card-text"><?php echo $book['auteur'] ?> </p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Prix :  <?php echo $book['prix'] ?>DA</li>
-
-
-
-
             <?php
-            foreach($category as $index =>$cat ) {
-              if($cat['id']== $book['category']){
-                
-                print '<li class="list-group-item">'.$cat['nom'].'</li>  ';
-
+              foreach($category as $index =>$cat ) {
+                if($cat['id']== $book['category']){
+                  print '<li class="list-group-item"> Catégorie: '.$cat['nom'].'</li>';
+                }
               }
-            }
             ?>
-    
-            
           </ul>
           <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+          <?php echo $book['resume'] ?>
           </div>
       </div>
       <div>
+        <br>
         <form action="actions/commander.php" method="POST">
             <input type="hidden" value="<?php echo $book['id'] ?>"name="produit"></input>
             <input type="number" class ="form-control" name="quantite" step="1" placeholder="quantite du produit"></input>
-            <button type ="submit" class="btn-btn-primary">Ajouter au panier </button>
+            <br>
+            <button type ="submit" class="btn-btn-primary btn btn-success">Ajouter au panier </button>
         </form>
       </div>
     </div>

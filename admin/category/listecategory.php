@@ -107,7 +107,7 @@ $category = getALLcategory();
                 <li class="nav-item">
                   <a class="nav-link" href="listecategory.php">
                     <span data-feather="file" class="align-text-bottom"></span>
-                    catégories
+                    Catégories
                   </a>
                 </li>
                 <li class="nav-item">
@@ -117,13 +117,7 @@ $category = getALLcategory();
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../stocks/listestock.php">
-                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Stock
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="../user/listeusers.php">
                     <span data-feather="users" class="align-text-bottom"></span>
                     Utilisateurs
                   </a>
@@ -211,8 +205,6 @@ $category = getALLcategory();
                   </div>
                   <br>
                   <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="description de la catégorie"></textarea>
-                  </div>
                     <textarea name="description" class="form-control" placeholder="description de la catégorie"></textarea>
                   </div>
                   <div class="modal-footer">

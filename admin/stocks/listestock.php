@@ -92,97 +92,95 @@ $stock = getstock();
         </div>
       </div>
     </header>
-
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">
-                  <span data-feather="home" class="align-text-bottom"></span>
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="file" class="align-text-bottom"></span>
-                  catégories
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../produits/listeproduits.php">
-                  <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                  Livres
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="stocks/listestock.php">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Stock
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="users" class="align-text-bottom"></span>
-                  Utilisateurs
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../profile.php">
-                  <span data-feather="layers" class="align-text-bottom"></span>
-                  Profile
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">stock des produits</h1>
-          </div>
-          <div>
-            <?php
-            if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-              print'<div class="alert alert-success">Quantite modifiée avec succès</div>';
-            }
-            ?>
-            <table class="table">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nom du produit</th>
-                  <th scope="col">Quantite</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody> 
-                <?php
-                  $i=0 ;
-                  foreach ($stock as $s ) {
-                    $i++ ;
-                    print ' 
-                      <tr>
-                        <th scope="row">'.$i.'</th>
-                        <td>'.$s['nom'].'</td>
-                        <td> '.$s['quantite'].' </td>
-                        <td> 
-                          <a data-bs-toggle="modal" data-bs-target="#editModal'.$s['id'].'" class="btn btn-outline-success">Modifier</a>
-                        </td>
-                      </tr>';
-                  } 
-                ?>
-              </tbody>
-            </table>  
-          </div>  
+            <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="#">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../category/listecategory.php">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    catégories
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../livres/listelivres.php">
+                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                    Livres
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="listestock.php">
+                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                    Stock
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="users" class="align-text-bottom"></span>
+                    Utilisateurs
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                    Reports
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="../profile.php">
+                    <span data-feather="layers" class="align-text-bottom"></span>
+                    Profile
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">stock des produits</h1>
+            </div>
+            <div>
+              <?php
+              if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
+                print'<div class="alert alert-success">Quantite modifiée avec succès</div>';
+              }
+              ?>
+              <table class="table">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom du produit</th>
+                    <th scope="col">Quantite</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <?php
+                    $i=0 ;
+                    foreach ($stock as $s ) {
+                      $i++ ;
+                      print ' 
+                        <tr>
+                          <th scope="row">'.$i.'</th>
+                          <td>'.$s['nom'].'</td>
+                          <td> '.$s['quantite'].' </td>
+                          <td> 
+                            <a data-bs-toggle="modal" data-bs-target="#editModal'.$s['id'].'" class="btn btn-outline-success">Modifier</a>
+                          </td>
+                        </tr>';
+                    } 
+                  ?>
+                </tbody>
+              </table>  
+            </div>  
         </main> 
-        
       </div>
     </div> 
     <?php

@@ -110,7 +110,7 @@ if(!isset($_SESSION['role'])){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="livres/listelivres.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                   Livres
                 </a>
@@ -134,7 +134,7 @@ if(!isset($_SESSION['role'])){
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="profile.php">
                   <span data-feather="layers" class="align-text-bottom"></span>
                   Profile
                 </a>

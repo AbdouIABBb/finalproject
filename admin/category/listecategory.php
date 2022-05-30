@@ -95,107 +95,107 @@ $category = getALLcategory();
 
     <div class="container-fluid">
       <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">
-                  <span data-feather="home" class="align-text-bottom"></span>
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">
-                  <span data-feather="file" class="align-text-bottom"></span>
-                  catégories
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../produits/listeproduits.php">
-                  <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                  Livres
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="stocks/listestock.php">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Stock
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="users" class="align-text-bottom"></span>
-                  Utilisateurs
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../profile.php">
-                  <span data-feather="layers" class="align-text-bottom"></span>
-                  Profile
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Liste des categories</h1>
-            <div >
-               <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary ">Ajouter </button>
-            </div> 
-          </div>
-          <div>
-            <?php
-            if (isset($_GET['add']) && $_GET['add'] == "ok"){
-              print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
-            }
-            ?>
-            <?php
-            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-              print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
-            }
-            ?>
-            <?php
-            if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-              print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
-            }
-            ?>
-            <table class="table">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Decription</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody> 
-                <?php
-                  $i=0 ;
-                  foreach ($category as $cat ) {
-                    $i++ ;
-                    print ' 
-                      <tr>
-                        <th scope="row">'.$i.'</th>
-                        <td>'.$cat['nom'].'</td>
-                        <td> '.$cat['description'].' </td>
-                        <td> 
-                          <a data-bs-toggle="modal" data-bs-target="#editModal'.$cat['id'].'" class="btn btn-outline-success">Modifier</a>
-                          <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-outline-danger">Supprimer</a>
-                        </td>
-                      </tr>';
-                  } 
-                ?>
-              </tbody>
-            </table>  
-          </div>  
-        </main> 
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="#">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="listecategory.php">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    catégories
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../livres/listelivres.php">
+                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                    Livres
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../stocks/listestock.php">
+                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                    Stock
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="users" class="align-text-bottom"></span>
+                    Utilisateurs
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                    Reports
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="../profile.php">
+                    <span data-feather="layers" class="align-text-bottom"></span>
+                    Profile
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Liste des categories</h1>
+              <div >
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary ">Ajouter </button>
+              </div> 
+            </div>
+            <div>
+              <?php
+              if (isset($_GET['add']) && $_GET['add'] == "ok"){
+                print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
+              }
+              ?>
+              <?php
+              if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
+                print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
+              }
+              ?>
+              <?php
+              if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
+                print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
+              }
+              ?>
+              <table class="table">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Decription</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <?php
+                    $i=0 ;
+                    foreach ($category as $cat ) {
+                      $i++ ;
+                      print ' 
+                        <tr>
+                          <th scope="row">'.$i.'</th>
+                          <td>'.$cat['nom'].'</td>
+                          <td> '.$cat['description'].' </td>
+                          <td> 
+                            <a data-bs-toggle="modal" data-bs-target="#editModal'.$cat['id'].'" class="btn btn-outline-success">Modifier</a>
+                            <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                          </td>
+                        </tr>';
+                    } 
+                  ?>
+                </tbody>
+              </table>  
+            </div>  
+          </main> 
         <!-- Modal ajout-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -239,7 +239,6 @@ $category = getALLcategory();
                                 <div class="form-group">
                                   <input type="text" name="nom" class="form-control" value="<?php echo $cat['nom']; ?>"placeholder="nom de la catégorie">
                                 </div>
-                                <br>
                                 <div class="form-group">
                                   <textarea name="description" class="form-control" placeholder="description de la catégorie"><?php echo $cat['description']; ?></textarea>
                                 </div>
@@ -259,13 +258,12 @@ $category = getALLcategory();
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
-
     <script > 
     function popUpDeleteCategory() {
       return confirm("Voulez-vous vraiment supprimer cette categorie ?");
       
     }
-  </script>
+    </script>
 
   </body>
 </html>

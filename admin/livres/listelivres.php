@@ -2,7 +2,8 @@
 session_start();
 include "../../inc/functions.php";
 $livres = getALLbook();
-$category= getALLcategory();
+$category = getALLcategory();
+$stock = getstock();
 ?>
 <!doctype html>
 <html lang="en">
@@ -96,7 +97,7 @@ $category= getALLcategory();
 
     <div class="container-fluid">
       <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -106,25 +107,25 @@ $category= getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="../category/listecategory.php">
+                <a class="nav-link" href="../category/listecategory.php">
                   <span data-feather="file" class="align-text-bottom"></span>
                   catégories
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link" href="listelivres.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                   Livres
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="stocks/listestock.php">
+                <a class="nav-link" href="../stocks/listestock.php">
                   <span data-feather="bar-chart-2" class="align-text-bottom"></span>
                   Stock
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../visiteur/listeusers.php">
+                <a class="nav-link" href="#">
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
@@ -136,7 +137,7 @@ $category= getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="../profile.php">
+                <a class="nav-link active" href="../profile.php">
                   <span data-feather="layers" class="align-text-bottom"></span>
                   Profile
                 </a>
@@ -145,75 +146,67 @@ $category= getALLcategory();
           </div>
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Liste des Livres</h1>
-            <div >
-               <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary ">Ajouter </button>
-            </div> 
-          </div>
-          <div>
-          
-
-
-          <div>
-            <?php
-            if (isset($_GET['add']) && $_GET['add'] == "ok"){
-              print'<div class="alert alert-success">Livre ajouté avec succès</div>';
-            }
-            ?>
-            <?php
-            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-              print'<div class="alert alert-success">Livre supprimé avec succès</div>';
-            }
-            ?>
-            <?php
-            if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-              print'<div class="alert alert-success">Livre modifié avec succès</div>';
-            }
-            ?>
-
-            <?php
-            if (isset($_GET['erreur']) && $_GET['erreur'] == "duplicate" ){
-              print'<div class="alert alert-danger">nom de livre deja exist</div>';
-            }
-            ?>
-
-            
-            
-
-
-            <table class="table">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nom</th>
-                  <th scope="col">Decription</th>
-                  <th scope="col">Prix</th>
-                  <th scope="col">Image</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody> 
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Liste des Livres</h1>
+                <div >
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary ">Ajouter </button>
+                </div> 
+            </div>
+            <div>
                 <?php
-                foreach ($livres as $livre) {
-                  ?>
-                  <tr>
-                    <th scope="row"><?php echo $livre['id']; ?></th>
-                    <td><?php echo $livre['nom']; ?></td>
-                    <td><?php echo $livre['descrition']; ?></td>
-                    <td><?php echo $livre['prix']; ?></td>
-                    <td><?php echo $livre['image']; ?></td>
-                    <td> 
-                          <a data-bs-toggle="modal" class="btn btn-outline-success">Modifier</a>
-                          <a href="supprimer.php" class="btn btn-outline-danger">Supprimer</a>
-                        </td>
-                  </tr>
-                  <?php
+                if (isset($_GET['add']) && $_GET['add'] == "ok"){
+                print'<div class="alert alert-success">Livre ajouté avec succès</div>';
                 }
                 ?>
-              </tbody>
-            </table>  
-          </div>  
+                <?php
+                if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
+                print'<div class="alert alert-success">Livre supprimé avec succès</div>';
+                }
+                ?>
+                <?php
+                if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
+                print'<div class="alert alert-success">Livre modifié avec succès</div>';
+                }
+                ?>
+
+                <?php
+                if (isset($_GET['erreur']) && $_GET['erreur'] == "duplicate" ){
+                print'<div class="alert alert-danger">Ce livre existe déjà</div>';
+                }
+                ?>
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Decription</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <?php
+                        $i=0 ;
+                        foreach ($livres as $livre) {
+                            $i++;
+                            print'
+                            <tr>
+                                <th scope="row">'.$i.'</th>
+                                <td>'.$livre['nom'].'</td>
+                                <td>'.$livre['description'].'</td>
+                                <td>'.$livre['prix'].'</td>
+                                <td>'.$livre['image'].'</td>
+                                <td> 
+                                    <a data-bs-target="#editModal'.$livre['id'].'" data-bs-toggle="modal" class="btn btn-outline-success">Modifier</a>
+                                    <a onClick="return popUpDeletelivre()" href= "supprimerlivre.php?idl='.$livre['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                                </td>
+                            </tr>';
+                        }
+                        ?>
+                    </tbody>
+                </table>  
+            </div>  
         </main> 
         <!-- Modal ajout-->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -224,86 +217,87 @@ $category= getALLcategory();
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form action="ajout.php" method="POST" enctype="multipart/form-data">
-                  <div class="form-group">
-                    <input type="text" name="nom" class="form-control" placeholder="nom de livre">
-                  </div>
-                  <br>
-
-                  <div class="form-group">
-                    <input type="number" step="0;01" name="prix" class="form-control" placeholder="Prix">
-                  </div>
-                  <br>
-
-                  
-
-                  <div class="form-group">
-                    <input type="file"  name="image" class="form-control" >
-                  </div>
-                  <br>
-
-
-                  <div class="form-group ">
-                  <select name="category" class="form-control" >
-                      <?php 
-
-                      foreach($category as $index => $c)
-                      print'<option value="'.$c['id'].'"> '.$c['nom']. '</option>';
-                      
-                    ?>
-
-
-                   <input type="hidden" name="createur" value="<?php  echo $_SESSION['id']; ?>" />
-                    
-                    
-                    </select>
-                    </div >
-                    <div class="form-group">
-                      <input type="number" name="quantite" class="form-control" placeholder="saisissez la quantite du livre">
-
-
-
-          
-
-                 <br> 
-                 <br>
-                  <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="description de la Livre"></textarea>
-                  </div> 
-
-                  
-
-                  
-
-
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
-                  </div>
-                </form>
+                    <form action="ajoutlivre.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="text" name="nom" class="form-control" placeholder="nom de livre">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="number" step="0;01" name="prix" class="form-control" placeholder="Prix">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <input type="file"  name="image" class="form-control" >
+                        </div>
+                        <br>
+                        <div class="form-group ">
+                            <select name="category" class="form-control" >
+                                <?php 
+                                foreach($category as $index => $c){
+                                    print'<option value="'.$c['id'].'"> '.$c['nom']. '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div >
+                        <br>
+                        <div class="form-group">
+                            <input type="number" name="quantite" class="form-control" placeholder="saisissez la quantite du livre">
+                        </div> 
+                        <br> 
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" placeholder="description du livre"></textarea>
+                        </div> 
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
               </div>
             </div>
           </div>
         </div>
         <?php
-        foreach ($category as $index=> $cat ) { ?>
+        foreach ($livres as $index=> $livre ) { ?>
           <!-- Modal modification-->
-          <div class="modal fade" id="editModal<?php echo $cat['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="editModal<?php echo $livre['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Modification d'une catégorie</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Modification d'un livre</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <form action="modifiercategory.php" method="POST">
-                                <input type="hidden" value="<?php echo $cat['id']; ?>" name="idc" />
+                              <form action="modifierlivre.php" method="POST">
+                                <input type="hidden" value="<?php echo $livre['id']; ?>" name="idl" />
                                 <div class="form-group">
-                                  <input type="text" name="nom" class="form-control" value="<?php echo $cat['nom']; ?>"placeholder="nom de la catégorie">
+                                  <input type="text" name="nom" class="form-control" value="<?php echo $livre['nom']; ?>"placeholder="nom du livre">
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                  <textarea name="description" class="form-control" placeholder="description de la catégorie"><?php echo $cat['description']; ?></textarea>
+                                  <input type="number" name="prix" class="form-control" value="<?php echo $livre['prix']; ?>"placeholder="prix du livre">
                                 </div>
+                                <br>
+                                <div class="form-group">
+                                  <input type="file" name="image" class="form-control" value="<?php echo $livre['image']; ?>">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <select name="category" class="form-control" value="<?php echo $livre['category']; ?>">
+                                        <?php 
+                                        foreach($category as $index => $c){
+                                            print'<option value="'.$c['id'].'"> '.$c['nom']. '</option>';
+                                        }
+                                        ?>
+                                    </select>   
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                  <input type="number" name="quantite" class="form-control" value="<?php echo $stock['quantite']; ?>"placeholder="quantité du livre">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                  <textarea name="description" class="form-control" placeholder="description du livre"><?php echo $livre['description']; ?></textarea>
+                                </div>
+                                <br>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn btn-primary">Modifier</button>
                                 </div>
@@ -320,5 +314,11 @@ $category= getALLcategory();
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
+    <script > 
+    function popUpDeletelivre() {
+      return confirm("Voulez-vous vraiment supprimer ce livre ?");
+      
+    }
+    </script>
   </body>
 </html>

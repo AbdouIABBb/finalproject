@@ -23,10 +23,10 @@ if(isset($_GET['id'])) {
       <div class="card" >
           <div class="card-body">
               <h5 class="card-title"> <?php echo $book['nom'] ?> </h5>
-              <p class="card-text"><?php echo $book['descrition'] ?> </p>
+              <p class="card-text"><?php echo $book['description'] ?> </p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Prix :  <?php echo $book['prix'] ?></li>
+            <li class="list-group-item">Prix :  <?php echo $book['prix'] ?>DA</li>
 
 
 
@@ -49,7 +49,7 @@ if(isset($_GET['id'])) {
           </div>
       </div>
       <div>
-        <form action="actions/commander.php" method="POST>
+        <form action="actions/commander.php" method="POST">
             <input type="hidden" value="<?php echo $book['id'] ?>"name="produit"></input>
             <input type="number" class ="form-control" name="quantite" step="1" placeholder="quantite du produit"></input>
             <button type ="submit" class="btn-btn-primary">Ajouter au panier </button>

@@ -29,12 +29,12 @@ if(isset($_GET['cat'])){
         <?php
         if(!isset($_GET['cat'])){
           foreach($book as $b ){
-            print ' <div class="row col-3"> 
+            print ' <div class="row col-3 mt-2"> 
                       <div class="card" style="width: 18rem;">
                           <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
                           <div class="card-body">
                               <h5 class="card-title"> '.$b['nom'].' </h5>
-                              <p class="card-text">'.$b['descrition'].'</p>
+                              <p class="card-text">'.$b['description'].'</p>
                               <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
                           </div>
                       </div>
@@ -48,7 +48,7 @@ if(isset($_GET['cat'])){
                           <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
                           <div class="card-body">
                               <h5 class="card-title"> '.$b['nom'].' </h5>
-                              <p class="card-text">'.$b['descrition'].'</p>
+                              <p class="card-text">'.$b['description'].'</p>
                               <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
                           </div>
                       </div>

@@ -18,44 +18,45 @@ if(isset($_GET['id'])) {
   </head>
 <body>
   <?php include "inc/header.php"; ?>
-  <div class="row col-12 mt-4 p-5">
+  <div  class="row col-12 mt-2 p-5">
     <div class="row col-7 p-5">
       <div class="card" >
           <div class="card-body">
               <h5 class="card-title"> <?php echo $book['nom'] ?> </h5>
-              <p class="card-text"><?php echo $book['description'] ?> </p>
+              <p class="card-text">Auteur : <?php echo $book['auteur'] ?> </p>
+              
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Prix :  <?php echo $book['prix'] ?>DA</li>
-
-
-
-
             <?php
-            foreach($category as $index => $cat ) {
-              if($cat['id']== $book['category']){
-                
-                print '<li class="list-group-item">'.$cat['nom'].'</li>  ';
+
+         
+
+
+              foreach($category as $index =>$cat ) {
+                if($cat['id']== $book['category']){
+                  print '<li class="list-group-item"> Catégorie: '.$cat['nom'].'</li>';
+                }
 
               }
-            }
             ?>
-    
-            
           </ul>
-          <div class="card-body">
-
-          <form action="actions/commander.php" method="POST">
-            <input type="hidden" value=" <?php echo $book['id'] ?>" name="produit"></input>
-            <input type="number" class ="form-control" name="quantite" step="1" placeholder="quantite du produit"></input>
-            <br>
-            <button type ="submit" class="btn-btn-primary">Ajouter au panier </button>
-            
-        </form>
+          
+      <div>
+        
+          
           </div>
       </div>
       <div>
-        
+        <br>
+        <form class="d-flex" action="actions/commander.php" method="POST">
+            <input type="hidden"  value="<?php echo $book['id'] ?>"name="produit"></input>
+            <input type="number" class="row col-3 p-2"  name="quantite" step="1" placeholder="quantite du produit"></input>
+            <br>
+            <button type ="submit"  class="btn-btn-primary btn btn-success ">Ajouter au panier </button>
+        </form>
+        <?php echo $book['resume'] ?>
+
       </div>
     </div>
     <div class="row col-5 p-5">
@@ -67,3 +68,4 @@ if(isset($_GET['id'])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
+            

@@ -15,6 +15,7 @@ if (isset($_POST['login'])){
   }
   if($user){
    if (is_array($user) && count($user) > 0  ){ 
+   $_SESSION ['id']=$user['id'];
    $_SESSION ['email']=$user['email'];
    $_SESSION ['nom']=$user['nom'];
    $_SESSION ['prenom']=$user['prenom'];
@@ -55,6 +56,7 @@ if (isset($_POST['login'])){
                 <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
             <button type="submit" class="btn btn-primary" name="login">Se connecter</button>
+            <a href="reset_password.php">reset password</a>
         </form>
     </div>
     <?php  include"inc/footer.php"?>

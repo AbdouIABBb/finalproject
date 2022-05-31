@@ -99,7 +99,7 @@ $category = getALLcategory();
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="#">
+                  <a class="nav-link " aria-current="page" href="../home.php">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Home
                   </a>

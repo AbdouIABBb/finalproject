@@ -167,5 +167,27 @@ function getALLcommandes (){
   $commandes = $resultat ->fetchALL();
   return $commandes ;
 } 
+function getData(){
+  $data = array();
+  $conn = connect();
 
+  $requette = "SELECT count(*) from book";
+  $resultat = $conn -> query($requette);
+  $nbrPrds = $resultat->fetch();
+
+  $requette1 = "SELECT count(*) from category";
+  $resultat1 = $conn -> query($requette1);
+  $nbrCat = $resultat1->fetch();
+
+  $requette2 = "SELECT count(*) from user";
+  $resultat2 = $conn -> query($requette2);
+  $nbrClients = $resultat2->fetch();
+
+  $data["book"] = $nbrPrds[0];
+  $data["category"] = $nbrCat[0];
+  $data["user"] = $nbrClients[0];
+
+  return $data;
+
+}
 ?>

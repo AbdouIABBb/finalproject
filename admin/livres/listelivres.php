@@ -122,7 +122,14 @@ $category = getALLcategory();
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
+                
               </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="../commande/listecommande.php">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Commandes
+                  </a>
+                </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="bar-chart-2" class="align-text-bottom"></span>

@@ -17,7 +17,7 @@ function mailTo($email,$subject,$message){
     $mail->SMTPSecure = "ssl";           
     $mail->Port       = 465;                                    
 
-    $mail->setFrom('omaroudjoudi16@gmail.com','FinalProject');
+    $mail->setFrom('user.user200109@gmail.com','FinalProject');
     $mail->addAddress($email);  
     $mail->isHTML(true);                                  
     $mail->Subject = $subject;

@@ -24,10 +24,15 @@
                      <a class="nav-link active" aria-current="page" href="profile.php">Profile </a>
                  </li>';
 
-
-                     print'  <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION['panier'][3]).'</span>) </a>
-                 </li>';
+                 if(isset($_SESSION['panier'][3])){
+                      print'  <li class="nav-item">
+                 <a class="nav-link active" aria-current="page" href="panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION['panier'][3]).'</span>) </a>
+                  </li>';
+                }else {
+                    print'  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Mon Panier (<span class="text-danger"> 0 </span>) </a>
+                     </li>';
+                    }
 
                  
 

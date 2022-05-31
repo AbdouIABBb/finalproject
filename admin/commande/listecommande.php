@@ -1,8 +1,8 @@
 <?php 
 session_start();
 include "../../inc/functions.php";
-$category = getALLcategory();
-$user = getALLusers ();
+$commandes = getALLcommandes();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -96,104 +96,106 @@ $user = getALLusers ();
 
     <div class="container-fluid">
       <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">
-                  <span data-feather="home" class="align-text-bottom"></span>
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../category/listecategory.php">
-                  <span data-feather="file" class="align-text-bottom"></span>
-                  Catégories
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../livres/listelivres.php">
-                  <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                  Livres
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="listeusers.php">
-                  <span data-feather="users" class="align-text-bottom"></span>
-                  Utilisateurs
-                </a>
-              
-              </li>
-              <li class="nav-item">
+          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="#">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    Home
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="listecategory.php">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Catégories
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../livres/listelivres.php">
+                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                    Livres
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../user/listeusers.php">
+                    <span data-feather="users" class="align-text-bottom"></span>
+                    Utilisateurs
+                  </a>
+                  
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="../commande/listecommande.php">
                     <span data-feather="file" class="align-text-bottom"></span>
                     Commandes
                   </a>
                 </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="../profile.php">
-                  <span data-feather="layers" class="align-text-bottom"></span>
-                  Profile
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Liste des utilisateurs</h1>
-             
-          </div>
-          <div>
-            
-            <?php
-            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-              print'<div class="alert alert-success">Utilisateur supprimé avec succès</div>';
-            }
-            ?>
-            
-            <table class="table">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nom</th>
-                  <th scope="col">prenom</th>
-                  <th scope="col">Numero</th>
-                  <th scope="col">Email</th>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                    Reports
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="../profile.php">
+                    <span data-feather="layers" class="align-text-bottom"></span>
+                    Profile
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <h1 class="h2">Liste des commandes</h1>
+              
+            </div>
+            <div>
+              <?php
+              if (isset($_GET['add']) && $_GET['add'] == "ok"){
+                print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
+              }
+              ?>
+              <?php
+              if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
+                print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
+              }
+              ?>
+              <?php
+              if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
+                print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
+              }
+              ?>
+              <table class="table">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">client</th>
+                    <th scope="col">total</th>
+                    <th scope="col">date </th>
+                    <th scope="col">Action </th>
+                  </tr>
+                </thead>
+                <tbody> 
+                  <?php
+                    $i=0 ;
+                    foreach ($commandes as $c ) {
+                      $i++ ;
+                      print ' 
+                        <tr>
+                          <th scope="row">'.$i.'</th>
+                          <td>'.$c['nom'].' '.$c['prenom'].'</td>
+                          <td> '.$c['total'].' </td>
+                          <td> '.$c['date_creation'].' </td>
 
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody> 
-                <?php
-                  $i=0 ;
-                  foreach ($user as $u ) {
-                    $i++ ;
-                    print ' 
-                      <tr>
-                        <th scope="row">'.$i.'</th>
-                        <td>'.$u['nom'].'</td>
-                        <td> '.$u['prenom'].' </td>
-                        <td> '.$u['telephone'].' </td>
-                        <td> '.$u['email'].' </td>
+                        </tr>';
+                    } 
+                  ?>
+                </tbody>
+              </table>  
+            </div>  
+          </main> 
 
-                        <td> 
-                          
-                          <a onClick="return popUpDeleteCategory()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
-                        </td>
-                      </tr>';
-                  } 
-                ?>
-              </tbody>
-            </table>  
-          </div>  
-        </main> 
       </div>
     </div> 
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -201,13 +203,12 @@ $user = getALLusers ();
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
-
     <script > 
     function popUpDeleteCategory() {
-      return confirm("Voulez-vous vraiment supprimer l'utilisateur ?");
+      return confirm("Voulez-vous vraiment supprimer cette categorie ?");
       
     }
-  </script>
+    </script>
 
   </body>
 </html>

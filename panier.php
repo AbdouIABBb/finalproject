@@ -13,7 +13,7 @@ if(isset($_GET['cat'])){
 }else{
   $book= getALLbook();
 }
-
+$commandes = array(); 
 if(isset($_SESSION['panier'])){
     if(count($_SESSION['panier'][3]) > 0 ){
         $commandes = $_SESSION['panier'][3]; 
@@ -53,7 +53,6 @@ if(isset($_SESSION['panier'])){
                     </thead>
                     <tbody>
 
-
                     <?php
                     foreach($commandes as $index  => $commande ){
                         print'
@@ -62,7 +61,7 @@ if(isset($_SESSION['panier'])){
                             <td>'.$commande[5].'</td>
                             <td>'.$commande[0].'  pieces</td>
                             <td>'.$commande[1].'  DA</td>
-                            <td> <a href="actions/enlverproduitpanier.php?='.$index.'"  class="btn btn-danger">Supprimer </a>   </td>
+                            <td> <a href="actions/enlverproduitpanier.php?id='.$index.'"  class="btn btn-danger">Supprimer </a>   </td>
                         </tr>;
                         ';
                     }
@@ -75,7 +74,7 @@ if(isset($_SESSION['panier'])){
             <div class="text-end mt-3 "> 
                 <h3> Total a payer : <?php echo $total ;  ?> DA </h3>
                 <hr/>
-    <button class="btn btn-success" style="width:100px"> Valider </button>
+    <a href ="actions/valider-panier.php" class="btn btn-success" style="width:100px"> Valider </a>
 
 
                 </div>

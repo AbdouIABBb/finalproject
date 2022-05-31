@@ -46,25 +46,7 @@ session_start();
 
   
 
-//   //creation de panier
 
-// $requette_panier ="INSERT INTO panier(user,total,date_creation  ) VALUES('$user','$total','$date') ";
-// $resultat = $conn ->query($requette_panier);
-
-// $panier_id = $conn ->LastInsertId();
-
-
-
-
-
-// //Ajoutter commande
-
-
-  
- 
-
-//   $requette = "INSERT INTO  commandes(quantite,total,panier,date_creation,date_modification,produit) VALUES('$quantite','$total','$panier_id','$date','$date','$id_produit')  ";
-//   $conn ->query($requette);
 
 header('location:../panier.php');
   

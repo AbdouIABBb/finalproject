@@ -127,7 +127,7 @@ $user = getALLusers ();
               <li class="nav-item">
                   <a class="nav-link" href="../commande/listecommande.php">
                     <span data-feather="file" class="align-text-bottom"></span>
-                    Commandes
+                    commandes
                   </a>
                 </li>
               <li class="nav-item">

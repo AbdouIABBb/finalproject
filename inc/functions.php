@@ -171,6 +171,28 @@ function getALLcommandes (){
   $commandes = $resultat ->fetchALL();
   return $commandes ;
 } 
+function getALLdetails (){
+  $conn=connect();
+  $requette ="SELECT b.nom ,b.image ,c.quantite, c.total , c.panier FROM commandes c, book b WHERE c.produit = b.id ";
+  $resultat = $conn ->query($requette);
+  $details = $resultat ->fetchALL();
+  return $details ;
+} 
+function changerEtatCommande($data){
+  $conn=connect();
+  $requette = "update panier SET etat =' ".$data['etat']. "'where id='".$data['panier_id']."'";
+  $resultat = $conn ->query($requette);
+}
+function getCommandeByEtat( $commandes,$etat){
+  $commandesEtat = array();
+  foreach($commandes as $c){
+    if($c['etat'] == $etat ){
+      array_push($commandesEtat,$c);
+    }
+  }
+  return $commandesEtat;
+
+}
 function getData(){
   $data = array();
   $conn = connect();

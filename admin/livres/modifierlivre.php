@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../../inc/functions.php";
 $book = getbookbyid($_POST['idl']);
 
@@ -10,6 +11,7 @@ $quantite = $_POST['quantite'];
 $category = $_POST['category'];
 $auteur = $_POST['auteur'];
 $resume = $_POST['resume'];
+
 if(empty($nom)) $nom = $book['nom'];
 if(empty($resume)) $resume = $book['resume'];
 if(empty($prix)) $prix = $book['prix'];
@@ -26,6 +28,7 @@ $requette = "UPDATE book SET nom = '$nom', resume = '$resume' , prix = '$prix', 
 $resultat = $conn ->query($requette);
 
 if ($resultat){
-    header('location:listelivres.php?edit=ok');
+    $_SESSION['message'] = "Modification effectuée avec succès";
+    header('location:listelivres.php');
 }
 ?>

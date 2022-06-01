@@ -1,4 +1,5 @@
 <?php
+session_start();
 $idlivre = $_GET['idl'];
 
 
@@ -8,6 +9,7 @@ $requette="DELETE FROM book WHERE id='$idlivre'";
 $resultat= $conn->query($requette);
 
 if($resultat){
-        header('location:listelivres.php?delete=ok');
+        $_SESSION['message'] = "Suppression effectuée avec succès";
+        header('location:listelivres.php');
     }
 ?>

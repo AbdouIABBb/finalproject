@@ -154,25 +154,14 @@ $category = getALLcategory();
             </div>
             <div>
                 <?php
-                if (isset($_GET['add']) && $_GET['add'] == "ok"){
-                print'<div class="alert alert-success">Livre ajouté avec succès</div>';
+                if (isset($_SESSION['message']) ){
+                print'<div class="alert alert-success">'.$_SESSION['message'].'</div>';
+                unset($_SESSION['message']);
                 }
-                ?>
-                <?php
-                if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-                print'<div class="alert alert-success">Livre supprimé avec succès</div>';
-                }
-                ?>
-                <?php
-                if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-                print'<div class="alert alert-success">Livre modifié avec succès</div>';
-                }
-                ?>
-
-                <?php
-                if (isset($_GET['erreur']) && $_GET['erreur'] == "duplicate" ){
-                print'<div class="alert alert-danger">Ce livre existe déjà</div>';
-                }
+                if (isset($_SESSION['error']) ){
+                  print'<div class="alert alert-danger">'.$_SESSION['error'].'</div>';
+                  unset($_SESSION['error']);
+                  }
                 ?>
                 <table class="table">
                     <thead class="table-light">

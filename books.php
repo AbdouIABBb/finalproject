@@ -4,6 +4,7 @@ include "inc/functions.php";
 $category= getALLcategory();
 if(isset($_GET['id'])) {
   $book = getbookbyid($_GET['id']);
+  $_SESSION['bookid'] = $_GET['id'];
 }
 ?>
 
@@ -48,7 +49,7 @@ if(isset($_GET['id'])) {
         <br>
         <form class="d-flex" action="actions/commander.php" method="POST">
             <input type="hidden"  value="<?php echo $book['id'] ?>"name="produit"></input>
-            <input type="number" class="row col-3 p-2" min="1" name="quantite" step="1" placeholder="quantite du produit"></input>
+            <input type="number" class="row col-3 p-2" min="1" max="<?php echo $book['quantite'];  ?>" name="quantite" step="1" placeholder="quantite du produit"></input>
             <button type ="submit"  class="btn-btn-primary btn btn-success ">Ajouter au panier </button>
         </form>
       </div>

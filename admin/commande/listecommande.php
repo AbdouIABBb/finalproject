@@ -106,7 +106,7 @@ $commandes = getALLcommandes();
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="listecategory.php">
+                  <a class="nav-link" href="../category/listecategory.php">
                     <span data-feather="file" class="align-text-bottom"></span>
                     Catégories
                   </a>
@@ -151,21 +151,6 @@ $commandes = getALLcommandes();
               
             </div>
             <div>
-              <?php
-              if (isset($_GET['add']) && $_GET['add'] == "ok"){
-                print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
-              }
-              ?>
-              <?php
-              if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-                print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
-              }
-              ?>
-              <?php
-              if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-                print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
-              }
-              ?>
               <table class="table">
                 <thead class="table-light">
                   <tr>
@@ -187,7 +172,6 @@ $commandes = getALLcommandes();
                           <td>'.$c['nom'].' '.$c['prenom'].'</td>
                           <td> '.$c['total'].' </td>
                           <td> '.$c['date_creation'].' </td>
-
                         </tr>';
                     } 
                   ?>
@@ -203,12 +187,6 @@ $commandes = getALLcommandes();
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
-    <script > 
-    function popUpDeleteCategory() {
-      return confirm("Voulez-vous vraiment supprimer cette categorie ?");
-      
-    }
-    </script>
 
   </body>
 </html>

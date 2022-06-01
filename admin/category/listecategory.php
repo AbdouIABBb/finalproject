@@ -153,18 +153,9 @@ $category = getALLcategory();
             </div>
             <div>
               <?php
-              if (isset($_GET['add']) && $_GET['add'] == "ok"){
-                print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
-              }
-              ?>
-              <?php
-              if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-                print'<div class="alert alert-success">Catégorie supprimée avec succès</div>';
-              }
-              ?>
-              <?php
-              if (isset($_GET['edit']) && $_GET['edit'] == "ok" ){
-                print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
+              if (isset($_SESSION['message']) ){
+                print'<div class="alert alert-success">'.$_SESSION['message'].'</div>';
+                unset($_SESSION['message']);
               }
               ?>
               <table class="table">

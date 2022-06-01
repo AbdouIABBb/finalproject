@@ -35,6 +35,7 @@ if(isset($_GET['cat'])){
                           <div class="card-body">
                               <h5 class="card-title"> '.$b['nom'].' </h5>
                               <p class="card-text">'.$b['auteur'].'</p>
+                              <p class="card-text">'.$b['prix'].' DA</p>
                               <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
                           </div>
                       </div>

@@ -25,33 +25,23 @@ if(isset($_GET['id'])) {
           <div class="card-body">
                <?php
                   if (isset($_SESSION['error'])){
-                      print'<div class="alert alert-danger">'.$_SESSION["error"].'</div>';
-                      unset($_SESSION['error']);
+                    print'<div class="alert alert-danger">'.$_SESSION["error"].'</div>';
+                    unset($_SESSION['error']);
                   }
                 ?>
-              <h5 class="card-title"> <?php echo $book['nom'] ?> </h5>
-              <p class="card-text">Auteur : <?php echo $book['auteur'] ?> </p>
-              
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Prix :  <?php echo $book['prix'] ?>DA</li>
-            <?php
-
-         
-
-
-              foreach($category as $index =>$cat ) {
-                if($cat['id']== $book['category']){
-                  print '<li class="list-group-item"> Catégorie: '.$cat['nom'].'</li>';
-                }
-
-              }
-            ?>
-          </ul>
-          
-      <div>
-        
-          
+                <h5 class="card-title"> <?php echo $book['nom'] ?></h5>
+                <p class="card-text">Auteur : <?php echo $book['auteur'] ?></p>
+                <p class="card-text">Résumé :<?php echo $book['resume'] ?></p>  
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Prix :  <?php echo $book['prix'] ?>DA</li>
+                  <?php
+                  foreach($category as $index =>$cat ) {
+                    if($cat['id']== $book['category']){
+                        print '<li class="list-group-item"> Catégorie: '.$cat['nom'].'</li>';
+                    }
+                  }
+                  ?>
+                </ul>  
           </div>
       </div>
       <div>
@@ -59,11 +49,8 @@ if(isset($_GET['id'])) {
         <form class="d-flex" action="actions/commander.php" method="POST">
             <input type="hidden"  value="<?php echo $book['id'] ?>"name="produit"></input>
             <input type="number" class="row col-3 p-2" min="1" name="quantite" step="1" placeholder="quantite du produit"></input>
-            <br>
             <button type ="submit"  class="btn-btn-primary btn btn-success ">Ajouter au panier </button>
         </form>
-        <?php echo $book['resume'] ?>
-
       </div>
     </div>
     <div class="row col-5 p-5">

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 30 mai 2022 à 11:32
--- Version du serveur : 5.7.24
--- Version de PHP : 7.4.19
+-- Hôte : 127.0.0.1
+-- Généré le : mar. 31 mai 2022 à 12:03
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,9 +50,11 @@ INSERT INTO `administrateur` (`id`, `nom`, `email`, `mp`) VALUES
 CREATE TABLE `book` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `auteur` text NOT NULL,
+  `resume` text CHARACTER SET latin1 NOT NULL,
   `prix` float NOT NULL,
   `image` varchar(255) NOT NULL,
+  `quantite` int(11) NOT NULL,
   `category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,8 +62,8 @@ CREATE TABLE `book` (
 -- Déchargement des données de la table `book`
 --
 
-INSERT INTO `book` (`id`, `nom`, `description`, `prix`, `image`, `category`) VALUES
-(11, 'la colline oubliÃ©e', 'jhbjh', 250, '6294aa49d95e78.30588136.jpg', 11);
+INSERT INTO `book` (`id`, `nom`, `auteur`, `resume`, `prix`, `image`, `quantite`, `category`) VALUES
+(28, 'Roger et ses humains', 'Cyprien', 'hugo jeune chomeur accro Ã  Internet mÃ¨ne une vie ordinaire avec sa copine Florence Mais un jour il dÃ©couvre dans son salon un colis qui referme un robot avec une intelligence artificielle quil nomme Roger', 3000, '6294e3a05ad660.12466392.jpg', 20, 16);
 
 -- --------------------------------------------------------
 
@@ -80,8 +82,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `nom`, `description`) VALUES
-(11, 'cat1', 'desc 1\r\n'),
-(12, 'cat2', 'desc 2');
+(13, 'LittÃ©rature ', ''),
+(14, 'Policier', ''),
+(15, 'Horreur', ''),
+(16, 'BD', ''),
+(17, 'Roman contemporain ', '');
 
 -- --------------------------------------------------------
 
@@ -95,8 +100,38 @@ CREATE TABLE `commandes` (
   `total` float NOT NULL,
   `panier` int(11) NOT NULL,
   `date_creation` date NOT NULL,
+  `date_modification` date NOT NULL,
   `produit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `commandes`
+--
+
+INSERT INTO `commandes` (`id`, `quantite`, `total`, `panier`, `date_creation`, `date_modification`, `produit`) VALUES
+(6, 3, 9000, 6, '2022-05-30', '2022-05-30', 28);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+CREATE TABLE `panier` (
+  `id` int(11) NOT NULL,
+  `user` int(255) NOT NULL,
+  `total` float NOT NULL,
+  `etat` varchar(255) NOT NULL,
+  `date_creation` date NOT NULL,
+  `date_modification` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT INTO `panier` (`id`, `user`, `total`, `etat`, `date_creation`, `date_modification`) VALUES
+(6, 46, 9000, '', '2022-05-30', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -119,7 +154,18 @@ INSERT INTO `stock` (`id`, `produit`, `quantite`) VALUES
 (2, 8, 20),
 (3, 9, 20),
 (4, 10, 20),
-(5, 11, 22);
+(5, 11, 22),
+(6, 12, 10),
+(7, 13, 10),
+(8, 14, 15),
+(9, 15, 10),
+(10, 16, 10),
+(11, 17, 15),
+(12, 18, 5),
+(13, 19, 2),
+(14, 20, 2),
+(15, 21, 2),
+(16, 22, 7);
 
 -- --------------------------------------------------------
 
@@ -133,20 +179,19 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `etat` int(11) NOT NULL DEFAULT '0',
-  `telephone` varchar(10) NOT NULL
+  `etat` int(11) NOT NULL DEFAULT 0,
+  `telephone` varchar(10) NOT NULL,
+  `code` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`, `nom`, `prenom`, `etat`, `telephone`) VALUES
-(40, 'Abdou@gmail.com', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'aaaaaaaaaaa', 'aaaa', 0, '0999975444'),
-(41, 'zahra18@gmail.com', '01e50c681c0b05ff22686b3e0f7290d3', 'zahra', 'taleb', 0, '0999975444'),
-(42, 'test@gmail.com', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 0, '2359235'),
-(43, 'farid@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'farid', 'kara', 0, '0987654321'),
-(44, 'user@gmail.com', '2002518acba64ad3e9b937d548e0f3d1', 'user', 'user', 0, '0201030405');
+INSERT INTO `user` (`id`, `email`, `password`, `nom`, `prenom`, `etat`, `telephone`, `code`) VALUES
+(44, 'user@gmail.com', '2002518acba64ad3e9b937d548e0f3d1', 'user', 'user', 0, '0201030405', NULL),
+(46, 'admin@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'abdou', 'abdou', 0, '9999999988', NULL),
+(47, 'omarkhelifi233@gmail.com', '05a671c66aefea124cc08b76ea6d30bb', '', '', 0, '', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -177,6 +222,12 @@ ALTER TABLE `commandes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `stock`
 --
 ALTER TABLE `stock`
@@ -203,31 +254,37 @@ ALTER TABLE `administrateur`
 -- AUTO_INCREMENT pour la table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `panier`
+--
+ALTER TABLE `panier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

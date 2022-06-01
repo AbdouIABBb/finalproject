@@ -1,8 +1,8 @@
 <?php
 session_start();
 session_regenerate_id();
-if(isset($_SESSION['nom'])){
-  //header('location:profile.php');
+if(isset($_SESSION['role'])){
+  header('location:profile.php');
 
  }
 include "../inc/functions.php";

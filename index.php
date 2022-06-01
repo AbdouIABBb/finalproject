@@ -35,11 +35,21 @@ if(isset($_GET['cat'])){
                           <div class="card-body">
                               <h5 class="card-title"> '.$b['nom'].' </h5>
                               <p class="card-text">'.$b['auteur'].'</p>
-                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
-                          </div>
-                      </div>
-                    </div>';
-  
+                              <p class="card-text">'.$b['prix'].' DA</p>
+                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>';
+                              if($b['quantite'] == 0){
+                                print '<div class="btn btn-danger" style="margin-left:1.3px;">
+                                        rupture de stock
+                                      </div>
+                                      </div>
+                                      </div>
+                                    </div>';
+                              }else{
+                                print '
+                                    </div>
+                                    </div>
+                                  </div>';
+                              }
           }
         }else{
           foreach($book as $b ){
@@ -50,10 +60,20 @@ if(isset($_GET['cat'])){
                               <h5 class="card-title"> '.$b['nom'].' </h5>
                               <p class="card-text">'.$b['auteur'].'</p>
                               <p class="card-text">'.$b['prix'].'</p>
-                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>
-                          </div>
-                      </div>
-                    </div>';
+                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>';
+                              if($b['quantite'] == 0){
+                                print '<div class="btn btn-danger" style="margin-left:1.3px;">
+                                       rupture de stock
+                                      </div>
+                                      </div>
+                                      </div>
+                                    </div>';
+                              }else{
+                                print '
+                                    </div>
+                                    </div>
+                                  </div>';
+                              }
   
           }
         }

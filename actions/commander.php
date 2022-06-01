@@ -8,11 +8,10 @@ session_start();
     exit();
  }
 
- include"../inc/functions.php" ;
+ include "../inc/functions.php" ;
  $conn=connect();
 
-
-
+$book=getbookbyid($_SESSION['bookid']);
 
  $user =$_SESSION['id'];
 
@@ -25,7 +24,12 @@ session_start();
      $_SESSION['error'] = "veuillez saisir une quantité";
      header("Location: ../books.php?id=$id_produit");
      die();
+ }else if($quantite>$book['quantite']){
+     $_SESSION['error'] = "la quantité est superieur à la quantité en stock";
+     header("Location: ../books.php?id=$id_produit");
+     die();
  }
+
 
 
  $requette ="SELECT prix,nom FROM book where id='$id_produit' ";

@@ -48,8 +48,10 @@ function searchbook($keywords){
 
 function getbookbyid ($id){
   $conn=connect();
-  $requette = "SELECT * FROM book where id=$id  ";
-  $resultat = $conn->query($requette);
+  $requette = "SELECT * FROM book where id=:id  ";
+  $resultat = $conn ->prepare($requette);
+  $resultat->bindParam(':id',$id);
+  $resultat->execute();
   $book = $resultat->fetch();
   return $book; 
 }
@@ -154,8 +156,10 @@ function uploadFile($file){
 
 function getBooksByCategory($id){
   $conn=connect();
-  $requette ="SELECT * FROM book where category='$id'";
-  $resultat = $conn ->query($requette);
+  $requette ="SELECT * FROM book where category=:id";
+  $resultat = $conn ->prepare($requette);
+  $resultat->bindParam(':id',$id);
+  $resultat->execute();
   $books = $resultat ->fetchALL();
   return $books ; 
 }

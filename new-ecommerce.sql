@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 31 mai 2022 à 12:03
--- Version du serveur : 10.4.21-MariaDB
--- Version de PHP : 8.0.11
+-- Généré le : jeu. 02 juin 2022 à 23:51
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,7 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `nom`, `auteur`, `resume`, `prix`, `image`, `quantite`, `category`) VALUES
-(28, 'Roger et ses humains', 'Cyprien', 'hugo jeune chomeur accro Ã  Internet mÃ¨ne une vie ordinaire avec sa copine Florence Mais un jour il dÃ©couvre dans son salon un colis qui referme un robot avec une intelligence artificielle quil nomme Roger', 3000, '6294e3a05ad660.12466392.jpg', 20, 16);
+(28, 'Roger et ses humains', 'Cyprien', 'hugo jeune chomeur accro Ã  Internet mÃ¨ne une vie ordinaire avec sa copine Florence Mais un jour il dÃ©couvre dans son salon un colis qui referme un robot avec une intelligence artificielle quil nomme Roger', 3000, '6294e3a05ad660.12466392.jpg', 35, 13);
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,9 @@ CREATE TABLE `commandes` (
 --
 
 INSERT INTO `commandes` (`id`, `quantite`, `total`, `panier`, `date_creation`, `date_modification`, `produit`) VALUES
-(6, 3, 9000, 6, '2022-05-30', '2022-05-30', 28);
+(13, 5, 15000, 13, '2022-06-02', '0000-00-00', 28),
+(14, 4, 12000, 13, '2022-06-02', '0000-00-00', 28),
+(15, 1, 3000, 14, '2022-06-02', '0000-00-00', 28);
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,8 @@ CREATE TABLE `panier` (
 --
 
 INSERT INTO `panier` (`id`, `user`, `total`, `etat`, `date_creation`, `date_modification`) VALUES
-(6, 46, 9000, '', '2022-05-30', '0000-00-00');
+(13, 44, 27000, '', '2022-06-02', '0000-00-00'),
+(14, 44, 3000, '', '2022-06-02', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -191,7 +194,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `email`, `password`, `nom`, `prenom`, `etat`, `telephone`, `code`) VALUES
 (44, 'user@gmail.com', '2002518acba64ad3e9b937d548e0f3d1', 'user', 'user', 0, '0201030405', NULL),
 (46, 'admin@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'abdou', 'abdou', 0, '9999999988', NULL),
-(47, 'omarkhelifi233@gmail.com', '05a671c66aefea124cc08b76ea6d30bb', '', '', 0, '', NULL);
+(47, 'omarkhelifi233@gmail.com', '05a671c66aefea124cc08b76ea6d30bb', '', '', 0, '', 283440);
 
 --
 -- Index pour les tables déchargées
@@ -225,7 +228,8 @@ ALTER TABLE `commandes`
 -- Index pour la table `panier`
 --
 ALTER TABLE `panier`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user` (`user`);
 
 --
 -- Index pour la table `stock`
@@ -266,13 +270,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `panier`
 --
 ALTER TABLE `panier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `stock`
@@ -285,6 +289,16 @@ ALTER TABLE `stock`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD CONSTRAINT `user` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

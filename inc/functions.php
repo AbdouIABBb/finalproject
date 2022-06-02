@@ -166,7 +166,7 @@ function getBooksByCategory($id){
 
 function getALLcommandes (){
   $conn=connect();
-  $requette ="SELECT u.nom, u.prenom , u.telephone ,  p.total,  p.etat,  p.date_creation ,  p.id FROM panier p, user u WHERE p.user = u.id  ";
+  $requette ="SELECT u.nom, u.prenom , u.telephone , p.total, p.etat, p.date_creation , p.id FROM panier p, user u WHERE p.user = u.id";
   $resultat = $conn ->query($requette);
   $commandes = $resultat ->fetchALL();
   return $commandes ;

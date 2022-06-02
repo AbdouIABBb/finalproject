@@ -8,6 +8,7 @@ if(isset($_POST['btnSubmit'])){
 $commandes = getALLcommandes();
 $details = getAlldetails();
 
+
 if(isset($_POST['btnSearch'])){
   //echo $_POST['etat'];
   //exit;
@@ -198,6 +199,7 @@ if(isset($_POST['btnSearch'])){
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">client</th>
+                    <th scope="col">Téléphone</th>
                     <th scope="col">total</th>
                     <th scope="col">date </th>
                     <th scope="col">Etat </th>
@@ -213,6 +215,7 @@ if(isset($_POST['btnSearch'])){
                         <tr>
                           <th scope="row">'.$i.'</th>
                           <td>'.$c['nom'].' '.$c['prenom'].'</td>
+                          <td> '.$c['telephone'].' </td>
                           <td> '.$c['total'].' </td>
                           <td> '.$c['date_creation'].' </td>
                           <td> '.$c['etat'].' </td>

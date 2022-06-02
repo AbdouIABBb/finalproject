@@ -3,7 +3,7 @@
 function connect(){
     $servername= "localhost";
     $DBuser= "root" ; 
-    $DBpassword= "root" ; 
+    $DBpassword= "" ; 
     $DBname= "new-ecommerce" ; 
     
     try {

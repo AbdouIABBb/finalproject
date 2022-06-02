@@ -166,7 +166,6 @@ if(isset($_POST['btnSearch'])){
               
             </div>
             <div>
-<<<<<<< HEAD
               <?php
               if (isset($_GET['add']) && $_GET['add'] == "ok"){
                 print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
@@ -194,8 +193,6 @@ if(isset($_POST['btnSearch'])){
                   <input type="submit" class="btn btn-primary ml-2" value="chercher" name="btnSearch"></input>
                 </div>
               </form>
-=======
->>>>>>> 3e8a17656b5746b355a9316294b76ff722356b72
               <table class="table">
                 <thead class="table-light">
                   <tr>
@@ -218,15 +215,12 @@ if(isset($_POST['btnSearch'])){
                           <td>'.$c['nom'].' '.$c['prenom'].'</td>
                           <td> '.$c['total'].' </td>
                           <td> '.$c['date_creation'].' </td>
-<<<<<<< HEAD
                           <td> '.$c['etat'].' </td>
 
                           <td>
                               <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-outline-success">Afficher</a>
                               <a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-outline-primary">Traiter</a>
                           </td>
-=======
->>>>>>> 3e8a17656b5746b355a9316294b76ff722356b72
                         </tr>';
                     } 
                   ?>

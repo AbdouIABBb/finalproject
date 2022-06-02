@@ -2,7 +2,6 @@
 session_start();
 $idlivre = $_GET['idl'];
 
-
 include "../../inc/functions.php";
 $conn = connect();
 $requette="DELETE FROM book WHERE id='$idlivre'";

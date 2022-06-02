@@ -121,7 +121,7 @@ if(isset($_POST['btnSearch'])){
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="listecategory.php">
+                  <a class="nav-link" href="../category/listecategory.php">
                     <span data-feather="file" class="align-text-bottom"></span>
                     Catégories
                   </a>
@@ -166,6 +166,7 @@ if(isset($_POST['btnSearch'])){
               
             </div>
             <div>
+<<<<<<< HEAD
               <?php
               if (isset($_GET['add']) && $_GET['add'] == "ok"){
                 print'<div class="alert alert-success">Catégorie ajoutée avec succès</div>';
@@ -193,6 +194,8 @@ if(isset($_POST['btnSearch'])){
                   <input type="submit" class="btn btn-primary ml-2" value="chercher" name="btnSearch"></input>
                 </div>
               </form>
+=======
+>>>>>>> 3e8a17656b5746b355a9316294b76ff722356b72
               <table class="table">
                 <thead class="table-light">
                   <tr>
@@ -215,12 +218,15 @@ if(isset($_POST['btnSearch'])){
                           <td>'.$c['nom'].' '.$c['prenom'].'</td>
                           <td> '.$c['total'].' </td>
                           <td> '.$c['date_creation'].' </td>
+<<<<<<< HEAD
                           <td> '.$c['etat'].' </td>
 
                           <td>
                               <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-outline-success">Afficher</a>
                               <a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-outline-primary">Traiter</a>
                           </td>
+=======
+>>>>>>> 3e8a17656b5746b355a9316294b76ff722356b72
                         </tr>';
                     } 
                   ?>
@@ -312,12 +318,6 @@ foreach ($commandes as $index=> $c ) { ?>
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
-    <script > 
-    function popUpDeleteCategory() {
-      return confirm("Voulez-vous vraiment supprimer cette categorie ?");
-      
-    }
-    </script>
 
   </body>
 </html>

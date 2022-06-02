@@ -153,9 +153,10 @@ $user = getALLusers ();
           <div>
             
             <?php
-            if (isset($_GET['delete']) && $_GET['delete'] == "ok" ){
-              print'<div class="alert alert-success">Utilisateur supprimé avec succès</div>';
-            }
+            if (isset($_SESSION['message']) ){
+              print'<div class="alert alert-success">'.$_SESSION['message'].'</div>';
+              unset($_SESSION['message']);
+              }
             ?>
             
             <table class="table">

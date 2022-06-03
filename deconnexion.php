@@ -8,5 +8,4 @@ unset($_SESSION ['telephone']);
 
 header('location:index.php');
 
-
 ?>

@@ -228,7 +228,7 @@ if(isset($_POST['btnSearch'])){
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Afficher la liste des commandes </h5>
+                              <h5 class="modal-title" id="exampleModalLabel">Detail de la commande</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -282,12 +282,11 @@ foreach ($commandes as $index=> $c ) { ?>
                         <input type="hidden" value="<?php echo $c['id']; ?>" name="panier_id">
                            <div class="form-group mb-3">
                               <select name="etat" class="form-control">
-                                   <option value="livraison en cours">En cours de Livraison</option>
-                                   <option value="livraison termine">Livraison terminée</option>
-
+                                   <option value="livraison en cours">Confirmée</option>
+                                   <option value="livraison termine">Annulée</option>
+                                   <option value="livraison termine">Payée</option>
                               </select>
                             </div>
-                            
                             <div class="form-group">
                                 <button type="submit" name="btnSubmit" class="btn btn-primary">Sauvegarder</button>
                             </div>

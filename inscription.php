@@ -35,9 +35,9 @@ if (!empty($_POST)){
 
   ?>
 
-    <div class="col-12 p-5">
+    <div class="container">
         <h1 class="text-center">Inscription</h1>
-        <form action="inscription.php" method="post">
+        <form action="inscription.php" method="post" style="max-width:500px;margin:auto">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
                 <input type="email" name="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

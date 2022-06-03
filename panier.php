@@ -77,7 +77,7 @@ if(isset($_SESSION['panier'])){
               <div class="modal-body">
                 <form action="actions/valider-panier.php" method="POST">
                   <div class="form-group">
-                    <input type="text" name="rue" class="form-control mb-3" placeholder="Rue">
+                    <input type="text" name="rue" class="form-control mb-3" placeholder="Rue/village">
                   </div>
                   <div class="form-group">
                     <input type="text" name="ville" class="form-control mb-3" placeholder="Ville">

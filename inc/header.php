@@ -60,7 +60,7 @@
              <?php
              if( isset($_SESSION['nom'])){
 
-                print'<a href="deconnexion.php" class="btn btn-primary">Deconnexion </a>
+                print'<a href="deconnexion.php" class="btn btn-primary" style="margin-left:5px">Deconnexion </a>
                 ';
              }
              ?>

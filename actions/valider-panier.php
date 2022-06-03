@@ -11,6 +11,7 @@ include"../inc/functions.php" ;
  $rue=$_POST['rue'];
  $ville=$_POST['ville'];
  
+
 //creation de panier
 $requette_panier ="INSERT INTO panier(user,total,date_creation, rue, ville ) VALUES('$user','$total','$date', '$rue', '$ville') ";
 $resultat = $conn ->query($requette_panier);
@@ -33,7 +34,7 @@ $commandes=$_SESSION['panier'][3];
     $resultat=$conn ->query($requette);
 
  }
-//sup l panier
+//supprimer le panier
 unset($_SESSION['bookid']);
 $_SESSION['panier']=null;
 header('location:../index.php')

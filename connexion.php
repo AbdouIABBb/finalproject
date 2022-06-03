@@ -43,20 +43,21 @@ if (isset($_POST['login'])){
 
   ?>
 
-    <div class="col-12 p-5">
-        <h1 class="text-center">Connexion</h1>
-        <form method="post">
+    <div class="container">
+        <h1 class="text-center mb-5">Connexion</h1>
+        <form method="post" style="max-width:500px;margin:auto">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <label for="exampleInputEmail1" class="form-label">Adresse Email</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+              <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+              <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <button type="submit" class="btn btn-primary" name="login">Se connecter</button>
-            <a href="reset_password.php">reset password</a>
+            <button type="submit" class="btn btn-primary mb-3" name="login">Se connecter</button>
+            <a style="margin-left:220px; text-decoration:none" href="reset_password.php">Mot de passe oublié ?</a>
         </form>
+        
     </div>
     <?php  include"inc/footer.php"?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

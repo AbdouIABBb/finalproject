@@ -3,7 +3,7 @@
 function connect(){
     $servername= "localhost";
     $DBuser= "root" ; 
-    $DBpassword= "" ; 
+    $DBpassword= "root" ; 
     $DBname= "new-ecommerce" ; 
     
     try {
@@ -234,6 +234,5 @@ function AnullerCommande($pannier_id){
     $resultat->bindParam(':quantite',$quantite);
     $resultat->execute();    
   }
-  
 }
 ?>

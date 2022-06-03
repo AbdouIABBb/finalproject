@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if(!isset($_SESSION['nom'])){
+  header('location:connexion.php');
+}
 include "inc/functions.php";
 //var_dump($_SESSION['panier']);
 $total = $_SESSION['panier'][1] ;

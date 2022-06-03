@@ -100,7 +100,7 @@ $category = getALLcategory();
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">
+                <a class="nav-link " aria-current="page" href="../home.php">
                   <span data-feather="home" class="align-text-bottom"></span>
                   Home
                 </a>
@@ -122,7 +122,6 @@ $category = getALLcategory();
                   <span data-feather="users" class="align-text-bottom"></span>
                   Utilisateurs
                 </a>
-                
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="../commande/listecommande.php">
@@ -130,12 +129,6 @@ $category = getALLcategory();
                     commandes
                   </a>
                 </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Reports
-                </a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link active" href="../profile.php">
                   <span data-feather="layers" class="align-text-bottom"></span>
@@ -189,8 +182,8 @@ $category = getALLcategory();
                                 <td>'.$livre['image'].'</td>
                                 <td>'.$livre['quantite'].'</td>
                                 <td> 
-                                    <a data-bs-target="#editModal'.$livre['id'].'" data-bs-toggle="modal" class="btn btn-outline-success">Modifier</a>
-                                    <a onClick="return popUpDeletelivre()" href= "supprimerlivre.php?idl='.$livre['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                                    <a data-bs-target="#editModal'.$livre['id'].'" data-bs-toggle="modal" class="btn btn-success">Modifier</a>
+                                    <a onClick="return popUpDeletelivre()" href= "supprimerlivre.php?idl='.$livre['id'].'" class="btn btn-danger">Supprimer</a>
                                 </td>
                             </tr>';
                         }
@@ -210,27 +203,22 @@ $category = getALLcategory();
               <div class="modal-body">
                     <form action="ajoutlivre.php" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
-                            <input type="text" name="nom" class="form-control" placeholder="Intitulé du livre">
+                            <input type="text" name="nom" class="form-control mb-3" placeholder="Intitulé du livre">
                         </div>
-                        <br>
                         <div class="form-group">
-                            <input type ="text" name="auteur" class="form-control" placeholder="Auteur(s)">
+                            <input type ="text" name="auteur" class="form-control mb-3" placeholder="Auteur(s)">
                         </div>
-                        <br>
                         <div class="form-group">
-                            <input type="number" step="0;01" name="prix" class="form-control" placeholder="Le prix">
+                            <input type="number" step="0;01" name="prix" class="form-control mb-3" placeholder="Le prix">
                         </div>
-                        <br>
                         <div class="form-group">
-                            <input type="file"  name="image" class="form-control" >
+                            <input type="file"  name="image" class="form-control mb-3" >
                         </div>
-                        <br>
                         <div class="form-group">
-                            <input type="number" name="quantite" class="form-control" placeholder="La quantité">
+                            <input type="number" name="quantite" class="form-control mb-3" placeholder="La quantité">
                         </div> 
-                        <br>
                         <div class="form-group ">
-                            <select name="category" class="form-control" >
+                            <select name="category" class="form-control mb-3" >
                                 <?php 
                                 foreach($category as $index => $c){
                                     print'<option value="'.$c['id'].'"> '.$c['nom']. '</option>';
@@ -238,9 +226,8 @@ $category = getALLcategory();
                                 ?>
                             </select>
                         </div >
-                        <br>
                         <div class="form-group">
-                            <textarea name="resume" class="form form-control" placeholder="Le resumé du livre"></textarea>
+                            <textarea name="resume" class="form form-control mb-3" placeholder="Le resumé du livre"></textarea>
                         </div>  
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Ajouter</button>
@@ -264,27 +251,22 @@ $category = getALLcategory();
                               <form action="modifierlivre.php" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" value="<?php echo $livre['id']; ?>" name="idl" />
                                 <div class="form-group">
-                                  <input type="text" name="nom" class="form-control" placeholder="nom du livre">
+                                  <input type="text" name="nom" class="form-control mb-3" placeholder="nom du livre">
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                  <input type="text" name="auteur" class="form-control" placeholder="auteur du livre">
+                                  <input type="text" name="auteur" class="form-control mb-3" placeholder="auteur du livre">
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                  <input type="number" name="prix" class="form-control" placeholder="prix du livre">
+                                  <input type="number" name="prix" class="form-control mb-3" placeholder="prix du livre">
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                  <input type="file"  name="image" class="form-control" >
+                                  <input type="file"  name="image" class="form-control mb-3" >
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                  <input type="number" name="quantite" class="form-control">
+                                  <input type="number" name="quantite" class="form-control mb-3">
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                    <select name="category" class="form-control">
+                                    <select name="category" class="form-control mb-3">
                                         <?php 
                                         foreach($category as $index => $c){
                                             print'<option value="'.$c['id'].'"> '.$c['nom']. '</option>';
@@ -292,11 +274,9 @@ $category = getALLcategory();
                                         ?>
                                     </select>   
                                 </div>
-                                <br>
                                 <div class="form-group">
-                                  <textarea name="resume" type="text" class="form form-control" ><?php echo $livre['resume']; ?></textarea>
+                                  <textarea name="resume" type="text" class="form form-control mb-3" ><?php echo $livre['resume']; ?></textarea>
                                 </div>
-                                <br>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn btn-primary">Modifier</button>
                                 </div>

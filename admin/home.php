@@ -100,7 +100,7 @@ if(!isset($_SESSION['role'])){
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="profile.php">
+                <a class="nav-link " aria-current="page" href="home.php">
                   <span data-feather="home" class="align-text-bottom"></span>
                   Home
                 </a>
@@ -130,12 +130,6 @@ if(!isset($_SESSION['role'])){
                   </a>
                 </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link active" href="profile.php">
                   <span data-feather="layers" class="align-text-bottom"></span>
                   Profile
@@ -155,34 +149,29 @@ if(!isset($_SESSION['role'])){
           </div>
           <div class="container">
            <div  class="row col-12">
-               <div class="col-4 text-center bg-success text-white m-2 p-4">
+               <div class="col-4 text-center bg-success text-white m-2 p-4 mb-3">
                     <h1>
                     Nombre des produits:
                     </h1>
-                    <br>
                     <?php echo $data ['book']; ?>
                 </div>
-                <div class="col-4 text-center bg-danger text-white m-2 p-4">
+                <div class="col-4 text-center bg-danger text-white m-2 p-4 mb-3">
                     <h1>
                     Nombre des categories:
                     </h1>
-                    <br>
                     <?php echo $data ['category']; ?>
                 </div>
                 <div class="col-4 text-center bg-primary text-white m-2 p-4">
                     <h1>
                     Nombre des clients:
                     </h1>
-                    <br>
                     <?php echo $data ['user']; ?>
                 </div>
-            </div>
-                               
+            </div>            
           </div>
         </main>
       </div>
     </div>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="../js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>

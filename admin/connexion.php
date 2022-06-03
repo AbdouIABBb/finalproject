@@ -36,8 +36,6 @@ if (isset($_POST['login'])){
     <title>LeLibraire</title>
   </head>
   <body>
-  
-
     <div class="col-12 p-5">
         <h1 class="text-center">Espace Admin : Connexion</h1>
         <form method="post">

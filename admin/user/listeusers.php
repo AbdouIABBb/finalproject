@@ -93,14 +93,13 @@ $user = getALLusers ();
         </div>
       </div>
     </header>
-
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">
+                <a class="nav-link " aria-current="page" href="../home.php">
                   <span data-feather="home" class="align-text-bottom"></span>
                   Home
                 </a>
@@ -131,12 +130,6 @@ $user = getALLusers ();
                   </a>
                 </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link " href="../profile.php">
                   <span data-feather="layers" class="align-text-bottom"></span>
                   Profile
@@ -148,17 +141,14 @@ $user = getALLusers ();
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Liste des utilisateurs</h1>
-             
           </div>
           <div>
-            
             <?php
             if (isset($_SESSION['message']) ){
               print'<div class="alert alert-success">'.$_SESSION['message'].'</div>';
               unset($_SESSION['message']);
               }
             ?>
-            
             <table class="table">
               <thead class="table-light">
                 <tr>
@@ -167,7 +157,6 @@ $user = getALLusers ();
                   <th scope="col">prenom</th>
                   <th scope="col">Numero</th>
                   <th scope="col">Email</th>
-
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -183,10 +172,8 @@ $user = getALLusers ();
                         <td> '.$u['prenom'].' </td>
                         <td> '.$u['telephone'].' </td>
                         <td> '.$u['email'].' </td>
-
                         <td> 
-                          
-                          <a onClick="return popUpDeleteCategory()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                          <a onClick="return popUpDeleteCategory()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-danger">Supprimer</a>
                         </td>
                       </tr>';
                   } 
@@ -202,13 +189,11 @@ $user = getALLusers ();
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
-
     <script > 
-    function popUpDeleteCategory() {
-      return confirm("Voulez-vous vraiment supprimer l'utilisateur ?");
-      
-    }
-  </script>
-
+      function popUpDeleteCategory() {
+        return confirm("Voulez-vous vraiment supprimer l'utilisateur ?");
+        
+      }
+    </script>
   </body>
 </html>

@@ -3,20 +3,14 @@ session_start();
 include "../../inc/functions.php";
 if(isset($_POST['btnSubmit'])){
   changerEtatCommande($_POST);
-
 }
 $commandes = getALLcommandes();
 $details = getAlldetails();
 
-
 if(isset($_POST['btnSearch'])){
   //echo $_POST['etat'];
   //exit;
-  
-    $commandes = getCommandeByEtat($commandes, $_POST['etat']);
-  
-
-  
+  $commandes = getCommandeByEtat($commandes, $_POST['etat']);
   
 }
 ?>
@@ -116,7 +110,7 @@ if(isset($_POST['btnSearch'])){
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
                 <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="#">
+                  <a class="nav-link " aria-current="page" href="../home.php">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Home
                   </a>
@@ -144,12 +138,6 @@ if(isset($_POST['btnSearch'])){
                   <a class="nav-link" href="../commande/listecommande.php">
                     <span data-feather="file" class="align-text-bottom"></span>
                     commandes
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Reports
                   </a>
                 </li>
                 <li class="nav-item">
@@ -183,7 +171,7 @@ if(isset($_POST['btnSearch'])){
               }
               ?>
               <form action="" <?php echo $_SERVER['PHP_SELF'];?> method="POST">
-                <div class="form-group d-flex">
+                <div class="form-group d-flex mb-3">
                   <select name="etat" class="form-control" >
                      <option value="">Choisir l'etat..</option>
                      <option value="tous">Tous</option>
@@ -194,13 +182,13 @@ if(isset($_POST['btnSearch'])){
                   <input type="submit" class="btn btn-primary ml-2" style="margin-left: 5px" value="chercher" name="btnSearch"></input>
                 </div>
               </form>
-              <br>
               <table class="table">
                 <thead class="table-light">
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">client</th>
                     <th scope="col">Téléphone</th>
+                    <th scope="col">Adresse de livraison</th>
                     <th scope="col">total</th>
                     <th scope="col">date </th>
                     <th scope="col">Etat </th>
@@ -217,13 +205,13 @@ if(isset($_POST['btnSearch'])){
                           <th scope="row">'.$i.'</th>
                           <td>'.$c['nom'].' '.$c['prenom'].'</td>
                           <td> '.$c['telephone'].' </td>
+                          <td> '.$c['rue'].' '.$c['ville'].'</td>
                           <td> '.$c['total'].' </td>
                           <td> '.$c['date_creation'].' </td>
                           <td> '.$c['etat'].' </td>
-
                           <td>
-                              <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-outline-success">Afficher</a>
-                              <a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-outline-primary">Traiter</a>
+                            <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-success">Afficher</a>
+                            <a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-primary">Traiter</a>
                           </td>
                         </tr>';
                     } 
@@ -232,7 +220,6 @@ if(isset($_POST['btnSearch'])){
               </table>  
             </div>  
           </main> 
-
       </div>
     </div> 
     <?php
@@ -293,14 +280,14 @@ foreach ($commandes as $index=> $c ) { ?>
                     <div class="modal-body">
                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                         <input type="hidden" value="<?php echo $c['id']; ?>" name="panier_id">
-                           <div class="form-group">
+                           <div class="form-group mb-3">
                               <select name="etat" class="form-control">
                                    <option value="livraison en cours">En cours de Livraison</option>
                                    <option value="livraison termine">Livraison terminée</option>
 
                               </select>
                             </div>
-                            <br>
+                            
                             <div class="form-group">
                                 <button type="submit" name="btnSubmit" class="btn btn-primary">Sauvegarder</button>
                             </div>

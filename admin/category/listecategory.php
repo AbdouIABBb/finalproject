@@ -130,12 +130,6 @@ $category = getALLcategory();
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Reports
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link active" href="../profile.php">
                     <span data-feather="layers" class="align-text-bottom"></span>
                     Profile
@@ -178,8 +172,8 @@ $category = getALLcategory();
                           <td>'.$cat['nom'].'</td>
                           <td> '.$cat['description'].' </td>
                           <td> 
-                            <a data-bs-toggle="modal" data-bs-target="#editModal'.$cat['id'].'" class="btn btn-outline-success">Modifier</a>
-                            <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-outline-danger">Supprimer</a>
+                            <a data-bs-toggle="modal" data-bs-target="#editModal'.$cat['id'].'" class="btn btn-success">Modifier</a>
+                            <a onClick="return popUpDeleteCategory()" href="supprimercategory.php?idc='.$cat['id'].'" class="btn btn-danger">Supprimer</a>
                           </td>
                         </tr>';
                     } 
@@ -199,11 +193,10 @@ $category = getALLcategory();
               <div class="modal-body">
                 <form action="ajoutcategory.php" method="POST">
                   <div class="form-group">
-                    <input type="text" name="nom" class="form-control" placeholder="nom de la catégorie">
+                    <input type="text" name="nom" class="form-control mb-3" placeholder="nom de la catégorie">
                   </div>
-                  <br>
                   <div class="form-group">
-                    <textarea name="description" class="form-control" placeholder="description de la catégorie"></textarea>
+                    <textarea name="description" class="form-control mb-3" placeholder="description de la catégorie"></textarea>
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Ajouter</button>
@@ -227,10 +220,10 @@ $category = getALLcategory();
                               <form action="modifiercategory.php" method="POST">
                                 <input type="hidden" value="<?php echo $cat['id']; ?>" name="idc" />
                                 <div class="form-group">
-                                  <input type="text" name="nom" class="form-control" value="<?php echo $cat['nom']; ?>"placeholder="nom de la catégorie">
+                                  <input type="text" name="nom" class="form-control mb-3" value="<?php echo $cat['nom']; ?>"placeholder="nom de la catégorie">
                                 </div>
                                 <div class="form-group">
-                                  <textarea name="description" class="form-control" placeholder="description de la catégorie"><?php echo $cat['description']; ?></textarea>
+                                  <textarea name="description" class="form-control mb-3" placeholder="description de la catégorie"><?php echo $cat['description']; ?></textarea>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn btn-primary">Modifier</button>

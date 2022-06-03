@@ -22,7 +22,7 @@ if(isset($_GET['id'])) {
   <?php include "inc/header.php"; ?>
   <div  class="row col-12 mt-2 p-5">
     <div class="row col-7 p-5">
-      <div class="card" >
+      <div class="card mb-3" >
           <div class="card-body">
                <?php
                   if (isset($_SESSION['error'])){
@@ -46,7 +46,6 @@ if(isset($_GET['id'])) {
           </div>
       </div>
       <div>
-        <br>
         <form class="d-flex" action="actions/commander.php" method="POST">
             <input type="hidden"  value="<?php echo $book['id'] ?>"name="produit"></input>
             <input type="number" class="row col-3 p-2"  min="1" max="<?php echo $book['quantite'];  ?>" name="quantite" step="1" placeholder="quantité"></input>

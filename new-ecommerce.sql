@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : jeu. 02 juin 2022 à 23:51
--- Version du serveur : 10.4.22-MariaDB
--- Version de PHP : 8.1.2
+-- Hôte : localhost:3306
+-- Généré le : ven. 03 juin 2022 à 15:05
+-- Version du serveur : 5.7.24
+-- Version de PHP : 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,8 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `nom`, `auteur`, `resume`, `prix`, `image`, `quantite`, `category`) VALUES
-(28, 'Roger et ses humains', 'Cyprien', 'hugo jeune chomeur accro Ã  Internet mÃ¨ne une vie ordinaire avec sa copine Florence Mais un jour il dÃ©couvre dans son salon un colis qui referme un robot avec une intelligence artificielle quil nomme Roger', 3000, '6294e3a05ad660.12466392.jpg', 35, 13);
+(28, 'Roger et ses humains', 'Cyprien', 'hugo jeune chomeur accro Ã  Internet mÃ¨ne une vie ordinaire avec sa copine Florence Mais un jour il dÃ©couvre dans son salon un colis qui referme un robot avec une intelligence artificielle quil nomme Roger', 3000, '6294e3a05ad660.12466392.jpg', 26, 13),
+(31, 'la fille de papier', 'Guillaume Musso', 'Tom Boyd, un &eacute;crivain c&eacute;l&egrave;bre en panne d&#039;inspiration, voit surgir dans sa vie l&#039;h&eacute;ro&iuml;ne de ses romans. Elle est jolie, elle est d&eacute;sesp&eacute;r&eacute;e, elle va mourir s&#039;il s&#039;arr&ecirc;te d&#039;&eacute;crire.', 2500, '6299e0fd4e7092.32634180.jpg', 4, 17);
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,6 @@ CREATE TABLE `commandes` (
   `total` float NOT NULL,
   `panier` int(11) NOT NULL,
   `date_creation` date NOT NULL,
-  `date_modification` date NOT NULL,
   `produit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -108,10 +108,8 @@ CREATE TABLE `commandes` (
 -- Déchargement des données de la table `commandes`
 --
 
-INSERT INTO `commandes` (`id`, `quantite`, `total`, `panier`, `date_creation`, `date_modification`, `produit`) VALUES
-(13, 5, 15000, 13, '2022-06-02', '0000-00-00', 28),
-(14, 4, 12000, 13, '2022-06-02', '0000-00-00', 28),
-(15, 1, 3000, 14, '2022-06-02', '0000-00-00', 28);
+INSERT INTO `commandes` (`id`, `quantite`, `total`, `panier`, `date_creation`, `produit`) VALUES
+(31, 1, 3000, 26, '2022-06-03', 28);
 
 -- --------------------------------------------------------
 
@@ -123,18 +121,18 @@ CREATE TABLE `panier` (
   `id` int(11) NOT NULL,
   `user` int(255) NOT NULL,
   `total` float NOT NULL,
-  `etat` varchar(255) NOT NULL,
+  `etat` varchar(255) DEFAULT NULL,
   `date_creation` date NOT NULL,
-  `date_modification` date NOT NULL
+  `rue` varchar(250) NOT NULL,
+  `ville` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `panier`
 --
 
-INSERT INTO `panier` (`id`, `user`, `total`, `etat`, `date_creation`, `date_modification`) VALUES
-(13, 44, 27000, '', '2022-06-02', '0000-00-00'),
-(14, 44, 3000, '', '2022-06-02', '0000-00-00');
+INSERT INTO `panier` (`id`, `user`, `total`, `etat`, `date_creation`, `rue`, `ville`) VALUES
+(26, 44, 3000, ' livraison en cours', '2022-06-03', 'ath yenni', 'tizi-ouzou');
 
 -- --------------------------------------------------------
 
@@ -182,7 +180,7 @@ CREATE TABLE `user` (
   `password` varchar(255) NOT NULL,
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
-  `etat` int(11) NOT NULL DEFAULT 0,
+  `etat` int(11) NOT NULL DEFAULT '0',
   `telephone` varchar(10) NOT NULL,
   `code` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -258,7 +256,7 @@ ALTER TABLE `administrateur`
 -- AUTO_INCREMENT pour la table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `category`
@@ -270,13 +268,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT pour la table `panier`
 --
 ALTER TABLE `panier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `stock`

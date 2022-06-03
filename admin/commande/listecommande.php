@@ -185,15 +185,16 @@ if(isset($_POST['btnSearch'])){
               <form action="" <?php echo $_SERVER['PHP_SELF'];?> method="POST">
                 <div class="form-group d-flex">
                   <select name="etat" class="form-control" >
-                     <option value="">..Choisir l'etat..</option>
+                     <option value="">Choisir l'etat..</option>
                      <option value="tous">Tous</option>
                      <option value="en cours">En cours</option>
                      <option value="livraison en cours">En livraison </option>
                      <option value="livraison termine">Livraison terminee</option>
                   </select>
-                  <input type="submit" class="btn btn-primary ml-2" value="chercher" name="btnSearch"></input>
+                  <input type="submit" class="btn btn-primary ml-2" style="margin-left: 5px" value="chercher" name="btnSearch"></input>
                 </div>
               </form>
+              <br>
               <table class="table">
                 <thead class="table-light">
                   <tr>
@@ -236,7 +237,6 @@ if(isset($_POST['btnSearch'])){
     </div> 
     <?php
         foreach ($commandes as $index=> $c ) { ?>
-          <!-- Modal modification-->
           <div class="modal fade" id="Commandes<?php echo $c['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
@@ -282,7 +282,7 @@ if(isset($_POST['btnSearch'])){
         <?php  } 
 
 foreach ($commandes as $index=> $c ) { ?>
-  <!-- Modal modification-->
+  <!-- Modal Traitement-->
   <div class="modal fade" id="Traiter<?php echo $c['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -300,6 +300,7 @@ foreach ($commandes as $index=> $c ) { ?>
 
                               </select>
                             </div>
+                            <br>
                             <div class="form-group">
                                 <button type="submit" name="btnSubmit" class="btn btn-primary">Sauvegarder</button>
                             </div>

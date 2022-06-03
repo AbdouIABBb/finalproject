@@ -62,8 +62,7 @@ if(isset($_SESSION['panier'])){
                             <td>'.$commande[0].'  pieces</td>
                             <td>'.$commande[1].'  DA</td>
                             <td> <a href="actions/enlverproduitpanier.php?id='.$index.'"  class="btn btn-danger">Supprimer </a>   </td>
-                        </tr>;
-                        ';
+                        </tr>';
                     }
 
 

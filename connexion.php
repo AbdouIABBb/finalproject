@@ -2,7 +2,6 @@
 session_start();
 if(isset($_SESSION['nom'])){
   header('location:index.php');
-
  }
 include "inc/functions.php";
 $user = true;

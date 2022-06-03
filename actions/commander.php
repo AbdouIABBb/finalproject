@@ -1,10 +1,5 @@
 <?php 
 session_start();
-//test user s'il est connecté
-if(!isset($_SESSION ['nom'])){
-    header('location:../connexion.php');
-    exit();
-}
 
 include "../inc/functions.php" ;
 $conn=connect();
@@ -33,7 +28,12 @@ if(!isset($_SESSION['panier'])){ //panier existe pas
     $_SESSION['panier'] = array ( $user , 0 ,$date , array() ); //creation de panier 
 }
 $_SESSION['panier'][1]+= $total;
-$_SESSION['panier'][3][] = array ($quantite ,$total,$date ,$date,$id_produi ,$produit['nom'] );
+$_SESSION['panier'][3][] = array ($quantite ,$total,$date ,$date,$id_produit,$produit['nom'] );
+
+if(!isset($_SESSION['nom'])){
+    header('location:../connexion.php');
+    exit();
+}
 
 header('location:../panier.php');
   

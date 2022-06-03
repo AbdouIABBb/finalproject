@@ -3,7 +3,7 @@
 function connect(){
     $servername= "localhost";
     $DBuser= "root" ; 
-    $DBpassword= "root" ; 
+    $DBpassword= "" ; 
     $DBname= "new-ecommerce" ; 
     
     try {
@@ -215,5 +215,25 @@ function getData(){
 
   return $data;
 
+}
+
+function AnullerCommande($pannier_id){
+  $conn=connect();
+  $requette ="SELECT produit,quantite FROM commandes where panier=:id";
+  $resultat = $conn ->prepare($requette);
+  $resultat->bindParam(':id',$pannier_id);
+  $resultat->execute();
+  $commandes = $resultat ->fetchALL();
+  foreach ($commandes as $commande){
+    $book = getbookbyid($commande['produit']);
+    $quantite = $book['quantite']+$commande['quantite'];
+
+    $requette ="UPDATE book SET quantite=:quantite WHERE id=:id";
+    $resultat = $conn ->prepare($requette);
+    $resultat->bindParam(':id',$commande['produit']);
+    $resultat->bindParam(':quantite',$quantite);
+    $resultat->execute();    
+  }
+  
 }
 ?>

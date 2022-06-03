@@ -2,7 +2,13 @@
 session_start();
 include "../../inc/functions.php";
 if(isset($_POST['btnSubmit'])){
-  changerEtatCommande($_POST);
+  if($_POST['etat'] == 'Annulée'){
+    AnullerCommande($_POST['panier_id']);
+    changerEtatCommande($_POST);
+  }else{
+    changerEtatCommande($_POST);
+  }
+
 }
 $commandes = getALLcommandes();
 $details = getAlldetails();
@@ -282,9 +288,9 @@ foreach ($commandes as $index=> $c ) { ?>
                         <input type="hidden" value="<?php echo $c['id']; ?>" name="panier_id">
                            <div class="form-group mb-3">
                               <select name="etat" class="form-control">
-                                   <option value="livraison en cours">Confirmée</option>
-                                   <option value="livraison termine">Annulée</option>
-                                   <option value="livraison termine">Payée</option>
+                                   <option value="Confirmée">Confirmée</option>
+                                   <option value="Annulée">Annulée</option>
+                                   <option value="Payée">Payée</option>
                               </select>
                             </div>
                             <div class="form-group">

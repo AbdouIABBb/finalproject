@@ -5,7 +5,12 @@ include "../inc/functions.php" ;
 $conn=connect();
 $book=getbookbyid($_SESSION['bookid']);
 $user =$_SESSION['id'];
-
+if(isset($_SESSION[$_SESSION['email']])){
+    $_SESSION['panier'][3] = $_SESSION[$_SESSION['email']];
+    $_SESSION['panier'][1] = $_SESSION['total'];
+    unset($_SESSION['total']);
+    unset($_SESSION[$_SESSION['email']]);
+}
 //var_dump($_POST);
 $id_produit = $_POST['produit'];
 $quantite = $_POST['quantite'];
@@ -28,7 +33,11 @@ if(!isset($_SESSION['panier'])){ //panier existe pas
     $_SESSION['panier'] = array ( $user , 0 ,$date , array() ); //creation de panier 
 }
 $_SESSION['panier'][1]+= $total;
-$_SESSION['panier'][3][] = array ($quantite ,$total,$date ,$date,$id_produit,$produit['nom'] );
+if(isset($_SESSION['panier'][3])){
+    array_push($_SESSION['panier'][3],array ($quantite ,$total,$date ,$date,$id_produit,$produit['nom'] ));
+}else{
+    $_SESSION['panier'][3][] = array ($quantite ,$total,$date ,$date,$id_produit,$produit['nom'] );
+}
 
 if(!isset($_SESSION['nom'])){
     header('location:../connexion.php');

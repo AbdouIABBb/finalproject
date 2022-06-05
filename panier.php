@@ -17,10 +17,14 @@ if(isset($_GET['cat'])){
   $book= getALLbook();
 }
 $commandes = array(); 
-if(isset($_SESSION['panier'])){
+if(isset($_SESSION[$_SESSION['email']])){
+  $commandes = $_SESSION[$_SESSION['email']];
+}else{
+  if(isset($_SESSION['panier'])){
     if(count($_SESSION['panier'][3]) > 0 ){
         $commandes = $_SESSION['panier'][3]; 
     }
+}
 }
 ?>
 
@@ -63,7 +67,12 @@ if(isset($_SESSION['panier'])){
         </tbody>
       </table>
       <div class="text-end mt-3 "> 
-        <h3> Total a payer : <?php echo $total ;  ?> DA </h3>
+        <?php
+          if(isset($_SESSION['total'])){
+            $total += $_SESSION['total'];
+          }
+          echo '<h3> Total a payer :  '.$total.'DA </h3>';
+        ?>
         <hr/>
         <a data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success" style="width:100px"> Valider </a>
       </div>

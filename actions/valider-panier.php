@@ -6,7 +6,18 @@ include"../inc/functions.php" ;
  // id visiteur 
 
  $user=$_SESSION['id'];
- $total=$_SESSION['panier'][1];
+ if(isset($_SESSION[$_SESSION['email']])){
+   $commandes=$_SESSION[$_SESSION['email']];
+   unset($_SESSION[$_SESSION['email']]);
+}else{
+   $commandes=$_SESSION['panier'][3];
+}
+ if(isset($_SESSION['total'])){
+   $total=$_SESSION['panier'][1] + $_SESSION['total'];
+   unset($_SESSION['total']);
+ }else{
+   $total=$_SESSION['panier'][1];
+ }
  $date=date('y-m-d' );
  $rue=$_POST['rue'];
  $ville=$_POST['ville'];
@@ -16,7 +27,7 @@ include"../inc/functions.php" ;
 $requette_panier ="INSERT INTO panier(user,total,date_creation, rue, ville ) VALUES('$user','$total','$date', '$rue', '$ville') ";
 $resultat = $conn ->query($requette_panier);
 $panier_id = $conn ->LastInsertId();
-$commandes=$_SESSION['panier'][3];
+
 
  foreach($commandes as $commande)
  {
@@ -44,6 +55,12 @@ $commandes=$_SESSION['panier'][3];
  }
 // supprimer le panier
 unset($_SESSION['bookid']);
+if(isset($_SESSION[$_SESSION['email']])){
+   unset($_SESSION[$_SESSION['email']]);
+}
+if(isset($_SESSION['total'])){
+   unset($_SESSION['total']);
+}
 $_SESSION['panier']=null;
 header('location:../index.php')
 

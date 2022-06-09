@@ -56,6 +56,16 @@ function getbookbyid ($id){
   return $book; 
 }
 
+function checkIfUserExists($email){
+  $conn=connect();
+  $requette ="SELECT * FROM user WHERE email ='$email'";
+  $resultat = $conn ->query($requette);
+  if($resultat->rowCount()>0){
+    $user = $resultat ->fetch();
+    return $user;
+  }
+}
+
 function AddError($error){
   $_SESSION['erreur']=$error;
 }
@@ -102,6 +112,20 @@ function ConnectUser($data){
   }
   AddError("Email ou mot de passe incorrect");
   return false;
+}
+
+function modifierProfile($data){
+  $conn=connect();
+  $requette ="UPDATE user SET telephone = :telephone, password = :password WHERE email = :email";
+  $resultat = $conn ->prepare($requette);
+  $resultat->bindParam(':email',$data['email']);
+  $resultat->bindParam(':telephone',$data['tel']);
+  $resultat->bindParam(':password',$data['password']);
+  if($resultat->execute()){
+    return true;
+  }
+  return false;
+  
 }
 
 function ConnectAdmin ($data){
@@ -235,4 +259,7 @@ function AnullerCommande($pannier_id){
     $resultat->execute();    
   }
 }
+
+
+
 ?>

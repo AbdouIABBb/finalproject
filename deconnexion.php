@@ -11,8 +11,7 @@ unset($_SESSION ['nom']);
 unset($_SESSION ['prenom']);
 unset($_SESSION ['telephone']);
 unset($_SESSION['panier'][3]);
-print_r($_SESSION);
-die();
+if(isset($_SESSION['role'])) unset($_SESSION['role']);
 header('location:index.php');
 
 ?>

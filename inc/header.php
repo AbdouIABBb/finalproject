@@ -20,15 +20,11 @@
                      </ul>
                  </li>
                  <?php if( isset($_SESSION['nom'])){
-                       if(isset($_SESSION ['role'])){
+                       if(!isset($_SESSION ['role'])){
                         print'  <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="admin/profile.php">Profile </a>
-                    </li>';
-                       }else{
-                     print'  <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="profile.php">Profile </a>
                  </li>';
-                }
+                       }
 
                  if(isset($_SESSION[$_SESSION['email']])){
                       print'  <li class="nav-item">

@@ -4,9 +4,7 @@ include "../../inc/functions.php";
 if(isset($_POST['btnSubmit'])){
   if($_POST['etat'] == 'Annulée'){
     AnullerCommande($_POST['panier_id']);
-    changerEtatCommande($_POST);
-  }else{
-    changerEtatCommande($_POST);
+    changerEtatCommande("annuler",$_POST['panier_id']);
   }
 
 }

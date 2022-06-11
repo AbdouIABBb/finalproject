@@ -116,11 +116,26 @@ function ConnectUser($data){
 
 function modifierProfile($data){
   $conn=connect();
-  $requette ="UPDATE user SET telephone = :telephone, password = :password WHERE email = :email";
+  $requette ="UPDATE user SET email = :email,telephone = :telephone,nom = :nom ,prenom = :prenom WHERE email = :email_condition";
   $resultat = $conn ->prepare($requette);
   $resultat->bindParam(':email',$data['email']);
+  $resultat->bindParam(':nom',$data['nom']);
+  $resultat->bindParam(':prenom',$data['prenom']);
   $resultat->bindParam(':telephone',$data['tel']);
+  $resultat->bindParam(':email_condition',$data['email-condition']);
+  if($resultat->execute()){
+    return true;
+  }
+  return false;
+  
+}
+
+function modifierPass($data){
+  $conn=connect();
+  $requette ="UPDATE user SET password = :password WHERE email = :email_condition";
+  $resultat = $conn ->prepare($requette);
   $resultat->bindParam(':password',$data['password']);
+  $resultat->bindParam(':email_condition',$data['email-condition']);
   if($resultat->execute()){
     return true;
   }
@@ -195,6 +210,15 @@ function getALLcommandes (){
   $commandes = $resultat ->fetchALL();
   return $commandes ;
 } 
+
+function getALLcommandesByUser($id){
+  $conn=connect();
+  $requette ="SELECT id,total,etat,date_creation,rue,ville FROM panier WHERE user = '$id'";
+  $resultat = $conn ->query($requette);
+  $commandes = $resultat ->fetchALL();
+  return $commandes ;
+} 
+
 function getALLdetails (){
   $conn=connect();
   $requette ="SELECT b.nom ,b.image ,c.quantite, c.total , c.panier FROM commandes c, book b WHERE c.produit = b.id ";
@@ -202,9 +226,9 @@ function getALLdetails (){
   $details = $resultat ->fetchALL();
   return $details ;
 } 
-function changerEtatCommande($data){
+function changerEtatCommande($etat,$panier){
   $conn=connect();
-  $requette = "update panier SET etat =' ".$data['etat']. "'where id='".$data['panier_id']."'";
+  $requette = "update panier SET etat =' ".$etat. "'where id='".$panier."'";
   $resultat = $conn ->query($requette);
 }
 function getCommandeByEtat( $commandes,$etat){

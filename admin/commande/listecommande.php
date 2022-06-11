@@ -2,21 +2,19 @@
 session_start();
 include "../../inc/functions.php";
 if(isset($_POST['btnSubmit'])){
-  if($_POST['etat'] == 'Annulée'){
+  if($_POST['etat'] == 'annuler'){
     AnullerCommande($_POST['panier_id']);
     changerEtatCommande("annuler",$_POST['panier_id']);
+  }else if($_POST['etat'] == 'confirmer'){
+    changerEtatCommande("confirmer",$_POST['panier_id']);
+  }else{
+    changerEtatCommande("payer",$_POST['panier_id']);
   }
 
 }
 $commandes = getALLcommandes();
 $details = getAlldetails();
 
-if(isset($_POST['btnSearch'])){
-  //echo $_POST['etat'];
-  //exit;
-  $commandes = getCommandeByEtat($commandes, $_POST['etat']);
-  
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -174,18 +172,6 @@ if(isset($_POST['btnSearch'])){
                 print'<div class="alert alert-success">Catégorie modifiée avec succès</div>';
               }
               ?>
-              <form action="" <?php echo $_SERVER['PHP_SELF'];?> method="POST">
-                <div class="form-group d-flex mb-3">
-                  <select name="etat" class="form-control" >
-                     <option value="">Choisir l'etat..</option>
-                     <option value="tous">Tous</option>
-                     <option value="en cours">En cours</option>
-                     <option value="livraison en cours">En livraison </option>
-                     <option value="livraison termine">Livraison terminee</option>
-                  </select>
-                  <input type="submit" class="btn btn-primary ml-2" style="margin-left: 5px" value="chercher" name="btnSearch"></input>
-                </div>
-              </form>
               <table class="table">
                 <thead class="table-light">
                   <tr>
@@ -214,10 +200,12 @@ if(isset($_POST['btnSearch'])){
                           <td> '.$c['date_creation'].' </td>
                           <td> '.$c['etat'].' </td>
                           <td>
-                            <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-success">Afficher</a>
-                            <a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-primary">Traiter</a>
-                          </td>
-                        </tr>';
+                            <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-success">Afficher</a>';
+                          if($c['etat'] == " confirmer" || $c['etat'] == "En cours"){
+                            echo '<a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-primary">Traiter</a>
+                                    </td>
+                                  </tr>';
+                          }
                     } 
                   ?>
                 </tbody>
@@ -284,16 +272,29 @@ foreach ($commandes as $index=> $c ) { ?>
                     <div class="modal-body">
                         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                         <input type="hidden" value="<?php echo $c['id']; ?>" name="panier_id">
-                           <div class="form-group mb-3">
-                              <select name="etat" class="form-control">
-                                   <option value="Confirmée">Confirmée</option>
-                                   <option value="Annulée">Annulée</option>
-                                   <option value="Payée">Payée</option>
-                              </select>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" name="btnSubmit" class="btn btn-primary">Sauvegarder</button>
-                            </div>
+                        <?php if($c['etat'] == " confirmer"){
+                          print'<div class="form-group mb-3">
+                          <select name="etat" class="form-control">
+                               <option value="annuler">Annulée</option>
+                               <option value="payer">Payée</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="btnSubmit" class="btn btn-primary">Sauvegarder</button>
+                        </div>';
+                        }else{
+                          print'<div class="form-group mb-3">
+                          <select name="etat" class="form-control">
+                               <option value="confirmer">confirmer</option>
+                               <option value="annuler">Annulée</option>
+                               <option value="payer">Payée</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" name="btnSubmit" class="btn btn-primary">Sauvegarder</button>
+                        </div>';
+                        }
+                        ?>
                         </form>
                     </div>
                   </div>

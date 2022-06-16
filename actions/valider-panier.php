@@ -1,6 +1,6 @@
 <?php
 session_start();
-include"../inc/functions.php" ;
+include "../inc/functions.php" ;
  $conn=connect();
  $book=getbookbyid($_SESSION['bookid']);
  // id visiteur 
@@ -21,7 +21,12 @@ include"../inc/functions.php" ;
  $date=date('y-m-d' );
  $rue=$_POST['rue'];
  $ville=$_POST['ville'];
- 
+
+ if(empty($rue)||empty($ville)){
+   $_SESSION['error'] = "veuillez saisir une adresse de livraison complète";
+   header('location: ../panier.php');
+   die();
+}
 
 // creation de panier
 $requette_panier ="INSERT INTO panier(user,total,date_creation, rue, ville ) VALUES('$user','$total','$date', '$rue', '$ville') ";

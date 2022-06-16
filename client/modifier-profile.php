@@ -36,7 +36,7 @@ $details = getAlldetails();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="client/listecommandes.php">
+                <a class="nav-link" href="listecommandes.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                     Mes commandes
                 </a>
@@ -44,83 +44,84 @@ $details = getAlldetails();
               <li class="nav-item">
                 <a class="nav-link" href="modifier-profile.php">
                   <span data-feather="users" class="align-text-bottom"></span>
-                    Profile
+                      Modifier mon profile
                 </a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="modifier-pass.php">
                     <span data-feather="file" class="align-text-bottom"></span>
-                      Modifier mot de passe
+                      Modifier mon mot de passe
                   </a>
               </li>
             </ul>
           </div>
         </nav>
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="container">
- <div class="row gutters">
- <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
- <div class="card h-100">
- 	<div class="card-body">
-       <?php
-         if (isset($_SESSION['message']) ){
-           print'<div class="alert alert-danger">'.$_SESSION['message'].'</div>';
-           unset($_SESSION['message']);
-         }
-         if (isset($_SESSION['success']) ){
-           print'<div class="alert alert-success">'.$_SESSION['success'].'</div>';
-           unset($_SESSION['success']);
-         }
-       ?>
-     <form action="../actions/modifierProfile.php" method="post">
- 		<div class="row gutters">
- 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
- 				<h6 class="mb-2 text-primary">Personal Details</h6>
- 			</div>
-       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
- 				<div class="form-group">
-                <label for="fullName">Nom</label>
- 					<input type="text" class="form-control" id="fullName" name="nom" placeholder="Enter nom">
- 				</div>
- 			</div>
-       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
- 				<div class="form-group">
- 					<label for="Prenom">Prenom</label>
- 					<input type="text" class="form-control" id="Prenom" name="prenom" placeholder="Enter prenom">
- 				</div>
- 			</div>
- 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
- 				<div class="form-group">
-            <label type="email">email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
- 				</div>
- 			</div>
- 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
- 				<div class="form-group">
- 					<label for="phone">Telephone</label>
- 					<input type="text" class="form-control" id="phone" name="tel" placeholder="Enter phone number">
- 				</div>
- 			</div>
-       </div>
- 		</div>
- 		<div class="row gutters">
- 			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
- 				<div class="text-right">
- 					<button type="submit" id="submit" name="cancel" class="btn btn-secondary">Cancel</button>
- 					<button type="submit" id="submit" name="modifier-profile" class="btn btn-primary">Modifier</button>
- 				</div>
- 			</div>
- 		</div>
-     </form>
- 	</div>
- </div>
- </div>
- </div>
- </div>
-          </main> 
+            <div class="row gutters">
+              <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <?php
+                      if (isset($_SESSION['message']) ){
+                        print'<div class="alert alert-danger">'.$_SESSION['message'].'</div>';
+                        unset($_SESSION['message']);
+                      }
+                      if (isset($_SESSION['success']) ){
+                        print'<div class="alert alert-success">'.$_SESSION['success'].'</div>';
+                        unset($_SESSION['success']);
+                      }
+                    ?>
+                    <form action="../actions/modifierProfile.php" method="post">
+                      <div class="row">
+                        
+                          <h6 class="mb-2 text-primary">Informations personnelles</h6>
+                          </div>
+                            
+                              <div class="form-group">
+                                      <label for="fullName">Nom</label>
+                                <input type="text" class="form-control mb-3 mt-2" id="fullName" name="nom" placeholder="Nom">
+                              </div>
+                            
+                           
+                              <div class="form-group">
+                                <label for="Prenom">Prénom</label>
+                                <input type="text" class="form-control mt-2 mb-3" id="Prenom" name="prenom" placeholder="Prenom">
+                              </div>
+                            
+                            
+                              <div class="form-group">
+                                  <label type="email">Adresse E-mail</label>
+                                  <input type="text" class="form-control mb-3 mt-2" id="email" name="email" placeholder="Adresse E-mail">
+                              </div>
+                            
+                            
+                              <div class="form-group">
+                                <label for="phone">Numéro de téléphone</label>
+                                <input type="text" class="form-control mt-2" id="phone" name="tel" placeholder="Numéro de téléphone">
+                              
+                            </div>
+                          </div>
+                        
+                      </div>
+                      <div class="row gutters">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                          <button type="submit" id="submit" name="cancel" class="btn btn-secondary mt-3">Annuler</button>
+                          <button type="submit" id="submit" name="modifier-profile" class="btn btn-primary mt-3">Modifier</button>
+                        </div>
+                      </div>
+                    </form>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+ 	          </div>
+          </div>
+        </main>
       </div>
-    </div> 
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-
   </body>
 </html>

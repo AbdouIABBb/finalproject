@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
          <div class="container-fluid">
-             <a class="navbar-brand" href="index.php">LeLibraire</a>
+             <a class="navbar-brand" href="../index.php">LeLibraire</a>
                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                  </button>
@@ -22,7 +22,7 @@
                  <?php if( isset($_SESSION['nom'])){
                        if(!isset($_SESSION ['role'])){
                         print'  <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="profile.php">Profile </a>
+                     <a class="nav-link active" aria-current="page" href="profile.php">Mon espace</a>
                  </li>';
                        }
 

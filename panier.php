@@ -41,6 +41,12 @@ if(isset($_SESSION[$_SESSION['email']])){
   	<?php include "inc/header.php"; ?>
     <div class="row col-12 mt-4 p-5  " style="justify-content:center; gap:1em;">
       <h1>  Panier </h1> 
+      <?php
+          if (isset($_SESSION['error']) ){
+            print'<div class="alert alert-danger">'.$_SESSION['error'].'</div>';
+            unset($_SESSION['error']);
+          }
+      ?>
       <table class="table">
         <thead class="table-light">
           <tr>
@@ -60,7 +66,7 @@ if(isset($_SESSION[$_SESSION['email']])){
               <td>'.$commande[5].'</td>
               <td>'.$commande[0].'  pieces</td>
               <td>'.$commande[1].'  DA</td>
-              <td> <a href="actions/enlverproduitpanier.php?id='.$index.'"  class="btn btn-danger">Supprimer </a>   </td>
+              <td> <a onClick="return popUpSupprimerDuPanier()" href="actions/enlverproduitpanier.php?id='.$index.'"  class="btn btn-danger">Supprimer </a>   </td>
             </tr>';
           }
           ?>
@@ -101,7 +107,13 @@ if(isset($_SESSION[$_SESSION['email']])){
         </div>
 
     </div>
-    <?php  include"inc/footer.php"?>
+    <?php  include "inc/footer.php"?>
+    <script > 
+      function popUpSupprimerDuPanier() {
+        return confirm("Voulez-vous vraiment supprimer ce livre du panier ?");
+        
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
 </html>

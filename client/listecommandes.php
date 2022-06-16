@@ -36,7 +36,7 @@ $details = getAlldetails();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="client/listecommandes.php">
+                <a class="nav-link" href="listecommandes.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                     Mes commandes
                 </a>
@@ -44,13 +44,13 @@ $details = getAlldetails();
               <li class="nav-item">
                 <a class="nav-link" href="modifier-profile.php">
                   <span data-feather="users" class="align-text-bottom"></span>
-                    Profile
+                    Modifier mon profile
                 </a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="modifier-pass.php">
                     <span data-feather="file" class="align-text-bottom"></span>
-                      Modifier mot de passe
+                      Modifier mon mot de passe
                   </a>
               </li>
             </ul>
@@ -93,8 +93,8 @@ $details = getAlldetails();
                               <td> '.$c['etat'].' </td>
                               <td>
                                 <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-primary">Afficher</a>
-                                <button type="submit"class="btn btn-success" name="confirmer">Confirmer</a>
-                                <button type="submit" class="btn btn-danger" name="annuler">Annuler</a>
+                                <button onClick="return popUpConfirmerCommande()" type="submit"class="btn btn-success" name="confirmer">Confirmer</a>
+                                <button onClick="return popUpAnnulerCommande()" type="submit" class="btn btn-danger" name="annuler" style="margin-left:5px">Annuler</a>
                               </td>
                             </tr>';
                            }else{
@@ -171,6 +171,17 @@ $details = getAlldetails();
     <script src="../../js/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
-
+    <script > 
+      function popUpAnnulerCommande() {
+        return confirm("Voulez-vous vraiment annuler la commande ?");
+        
+      }
+    </script>
+    <script > 
+      function popUpConfirmerCommande() {
+        return confirm("Voulez-vous vraiment confirmer la commande ?");
+        
+      }
+    </script>
   </body>
 </html>

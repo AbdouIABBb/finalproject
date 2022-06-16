@@ -173,7 +173,7 @@ $user = getALLusers ();
                         <td> '.$u['telephone'].' </td>
                         <td> '.$u['email'].' </td>
                         <td> 
-                          <a onClick="return popUpDeleteCategory()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-danger">Supprimer</a>
+                          <a onClick="return popUpDeleteUser()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-danger">Supprimer</a>
                         </td>
                       </tr>';
                   } 
@@ -190,7 +190,7 @@ $user = getALLusers ();
     <script src="../../js/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="../../js/dashboard.js"></script>
     <script > 
-      function popUpDeleteCategory() {
+      function popUpDeleteUser() {
         return confirm("Voulez-vous vraiment supprimer l'utilisateur ?");
         
       }

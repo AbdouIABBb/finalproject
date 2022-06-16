@@ -12,7 +12,7 @@
             ];
         if(empty($data['tel']) && empty($data['email']) && empty($data['nom']) && empty($data['prenom'])){
             $_SESSION['message'] = "Il y'a rien a modifier";
-            header("Location: ../profile.php");
+            header("Location: ../client/modifier-profile.php");
             die();
         }
         $user = checkIfUserExists($_SESSION['email']);
@@ -25,10 +25,12 @@
         if(empty($data['nom'])) $data['nom'] = $user['nom'];
         if(empty($data['prenom'])) $data['prenom'] = $user['prenom'];
         if(modifierProfile($data)){
-            echo "good";
+            $_SESSION['success'] = "Les informations ont été modifiées avec succès";
+                header("Location: ../client/modifier-profile.php");
             die();
         }else{
-            echo "bad";
+            $_SESSION['message'] = "Les informations n'ont pas été modifiées";
+                header("Location: ../client/modifier-profile.php");
             die();
         }
 
@@ -41,32 +43,37 @@
             'confirmer' => $_POST['confirmer'],
             'email-condition'=> $_SESSION['email']
             ];
+        if(empty($data['ancien']) && empty($data['nouveau']) && empty($data['confirmer'])){
+            $_SESSION['message'] = "Il y'a rien a modifier";
+            header("Location: ../client/modifier-pass.php");
+            die();
+        }
         $user = checkIfUserExists($_SESSION['email']);
         if(empty($data['ancien'])){
             $data['password'] = $user['password'];
             modifierPass($data);
-            $_SESSION['success'] = "les information on ete modifier avec succes";
-            header("Location: ../profile.php");
+            $_SESSION['success'] = "le mot de passe a été modifié avec succès";
+            header("Location: ../client/modifier-pass.php");
         }else{
             if(md5($data['ancien']) == $user['password']){
                 if(!empty($data['nouveau']) && !empty($data['confirmer'])){
                     if($data['nouveau'] == $data['confirmer']){
                         $data['password'] = md5($data['nouveau']);
                         if(modifierPass($data)){
-                            $_SESSION['success'] = "les information on ete modifier avec succes";
-                            header("Location: ../profile.php");
+                            $_SESSION['success'] = "Le mot de passe a été modifié avec succès";
+                            header("Location: ../client/modifier-pass.php");
                         }
                     }else{
-                        $_SESSION['message'] = "New password and confirm password don't match";
-                        header("Location: ../profile.php");
+                        $_SESSION['message'] = "Le nouveau mot de passe et le mot de passe de confirmation ne sont pas identiques";
+                        header("Location: ../client/modifier-pass.php");
                     }
                 }else{
-                    $_SESSION['message'] = "Remplir tous les champs";
-                    header("Location: ../profile.php");
+                    $_SESSION['message'] = "Veuillez remplir tous les champs";
+                    header("Location: ../client/modifier-pass.php");
                 }
             }else{
                 $_SESSION['message'] = "Ancien mot de passe incorrect";
-                header("Location: ../profile.php");
+                header("Location: ../client/modifier-pass.php");
             }
         }
     }

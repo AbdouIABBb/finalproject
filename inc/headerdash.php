@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
          <div class="container-fluid">
-             <a class="navbar-brand" href="index.php">LeLibraire</a>
+             <a class="navbar-brand" href="../index.php">LeLibraire</a>
                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                  </button>
@@ -12,7 +12,7 @@
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                          <?php
                          foreach($category as $cat){
-                             print' <li><a class="dropdown-item" href="index.php?cat='.$cat['id'].'">'.$cat['nom'].'</a></li> ';
+                             print' <li><a class="dropdown-item" href="../index.php?cat='.$cat['id'].'">'.$cat['nom'].'</a></li> ';
                          }
 
                          ?>
@@ -22,17 +22,17 @@
                  <?php if( isset($_SESSION['nom'])){
                        if(!isset($_SESSION ['role'])){
                         print'  <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="profile.php">Mon espace</a>
+                     <a class="nav-link active" aria-current="page" href="../profile.php">Mon espace</a>
                  </li>';
                        }
 
                  if(isset($_SESSION[$_SESSION['email']])){
                       print'  <li class="nav-item">
-                 <a class="nav-link active" aria-current="page" href="panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION[$_SESSION['email']]).'</span>) </a>
+                 <a class="nav-link active" aria-current="page" href="../panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION[$_SESSION['email']]).'</span>) </a>
                   </li>';
                 }else if(isset($_SESSION['panier'][3])){
                     print'  <li class="nav-item">
-                 <a class="nav-link active" aria-current="page" href="panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION['panier'][3]).'</span>) </a>
+                 <a class="nav-link active" aria-current="page" href="../panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION['panier'][3]).'</span>) </a>
                   </li>';
                 }else{
                     print'  <li class="nav-item">
@@ -44,15 +44,15 @@
 
                  }else{
                      print' <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="connexion.php">Connexion</a>
+                     <a class="nav-link active" aria-current="page" href="../connexion.php">Connexion</a>
                  </li>
                  <li class="nav-item">
-                     <a class="nav-link active" aria-current="page" href="inscription.php">Insciption</a>
+                     <a class="nav-link active" aria-current="page" href="../inscription.php">Insciption</a>
                  </li>';
                  }?>
                 
              </ul>
-             <form class="d-flex" role="search" action="index.php" method ="POST">
+             <form class="d-flex" role="search" action="../index.php" method ="POST">
                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
                  <button class="btn btn-outline-success" type="submit">Search</button>
              </form>
@@ -60,7 +60,7 @@
              <?php
              if( isset($_SESSION['nom'])){
 
-                print'<a href="deconnexion.php" class="btn btn-primary" style="margin-left:5px">Deconnexion </a>
+                print'<a href="../deconnexion.php" class="btn btn-primary" style="margin-left:5px">Deconnexion </a>
                 ';
              }
              ?>

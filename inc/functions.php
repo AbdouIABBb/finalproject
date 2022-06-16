@@ -3,7 +3,7 @@
 function connect(){
     $servername= "localhost";
     $DBuser= "root" ; 
-    $DBpassword= "root" ; 
+    $DBpassword= "" ; 
     $DBname= "new-ecommerce" ; 
     
     try {
@@ -30,6 +30,16 @@ function getALLcategory (){
 function getALLbook(){
   $conn=connect();
   $requette ="SELECT * FROM book ";
+  $resultat = $conn ->query($requette);
+  $book = $resultat ->fetchALL();
+  return $book ;
+
+}
+
+
+function getLastBook(){
+  $conn=connect();
+  $requette = "select * FROM book order by id desc limit 4" ;
   $resultat = $conn ->query($requette);
   $book = $resultat ->fetchALL();
   return $book ;

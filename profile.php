@@ -51,17 +51,52 @@
         </nav>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Profile</h1>
-            <div >
-              <?php
-                echo $_SESSION['nom'];
-              ?>
-            </div>
+            <h1 class="h2">Mon profile</h1>
+            
           </div>
-          <div class="container">
+
+
+          <div class="row">
+                        
+                          <h6 class="mb-2 text-primary">Informations personnelles</h6>
+                          </div>
+                            
+                              <div class="form-group">
+                                      <label for="fullName">Nom</label>
+                                <p  class="form-control mb-3 mt-2" id="fullName" name="nom"  ><?php echo$_SESSION['nom'];?></p>
+                              </div>
+                            
+                           
+                              <div class="form-group">
+                                <label for="Prenom">Prénom</label>
+                                <p  class="form-control mt-2 mb-3" id="Prenom" name="prenom"><?php echo$_SESSION['prenom'];?></p>
+                              </div>
+                            
+                            
+                              <div class="form-group">
+                                  <label type="email">Adresse E-mail</label>
+                                  <p  class="form-control mb-3 mt-2" id="email" name="email" ><?php echo$_SESSION['email'];?></p>
+                              </div>
+                            
+                            
+                              <div class="form-group">
+                                <label for="phone">Numéro de téléphone</label>
+                                <p class="form-control mt-2" id="phone" name="tel" > <?php echo$_SESSION['telephone'];?></p>
+                              
+                            </div>
+                          </div>
+                        
+                      </div>
+
+      
+
+
+
+
+          <!-- <div class="container">
             <h1>Nom: <span class="text-primary"><?php echo$_SESSION['nom'];?></span></h1>
             <h1>Email: <span class="text-primary"><?php echo$_SESSION['email'];?></span></h1>
-          </div>
+          </div> -->
         </main>
       </div>
     </div>    

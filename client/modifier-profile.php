@@ -23,7 +23,7 @@ $details = getAlldetails();
     <title>LeLibraire</title>
   </head>
   <body>
-  	<?php include "../inc/header.php"; ?>
+  	<?php include "../inc/headerdash.php"; ?>
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="background:#2f2f33;">
@@ -107,7 +107,7 @@ $details = getAlldetails();
                       <div class="row gutters">
                       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="text-right">
-                          <button type="submit" id="submit" name="cancel" class="btn btn-secondary mt-3">Annuler</button>
+                          
                           <button type="submit" id="submit" name="modifier-profile" class="btn btn-primary mt-3">Modifier</button>
                         </div>
                       </div>

@@ -144,11 +144,35 @@ if(!isset($_SESSION['role'])){
               ?>
             </div>
           </div>
-          <div class="container">
-            <h1>Nom: <span class="text-primary"><?php echo$_SESSION['nom'];?></span></h1>
-            <h1>Email: <span class="text-primary"><?php echo$_SESSION['email'];?></span></h1>
-            <a data-bs-toggle="modal" data-bs-target="#profileEdit" class="btn btn-primary">Modifier</a>
-          </div>
+
+          <div class="row">
+                        
+                          <h6 class="mb-2 text-primary">Informations personnelles</h6>
+                          </div>
+                            
+                              <div class="form-group">
+                                      <label for="fullName">Nom</label>
+                                <p  class="form-control mb-3 mt-2" id="fullName" name="nom"  ><?php echo$_SESSION['nom'];?></p>
+                              </div>
+                            
+                           
+                              
+                            
+                            
+                              <div class="form-group">
+                                  <label type="email">Adresse E-mail</label>
+                                  <p  class="form-control mb-3 mt-2" id="email" name="email" ><?php echo$_SESSION['email'];?></p>
+                              </div>
+                            
+                              
+                              
+                          </div>
+                        
+                      </div>
+
+
+
+          
         </main>
       </div>
     </div>

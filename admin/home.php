@@ -149,23 +149,25 @@ if(!isset($_SESSION['role'])){
           </div>
           <div class="container">
            <div  class="row col-12">
-               <div class="col-4 text-center bg-success text-white m-2 p-4 mb-3">
-                    <h1>
+               <div class="col-4 text-center bg-success text-white m-4 p-4 mb-3">
+                    <h2>
                     Nombre des produits:
-                    </h1>
-                    <?php echo $data ['book']; ?>
+                    </h2>
+                    <h2><?php echo $data ['book']; ?></h2>
+    
+                    
                 </div>
-                <div class="col-4 text-center bg-danger text-white m-2 p-4 mb-3">
-                    <h1>
+                <div class="col-4 text-center bg-danger text-white m-4 p-4 mb-3">
+                    <h2>
                     Nombre des categories:
-                    </h1>
-                    <?php echo $data ['category']; ?>
+                    </h2>
+                    <h2> <?php echo $data ['category']; ?> </h2>
                 </div>
-                <div class="col-4 text-center bg-primary text-white m-2 p-4">
-                    <h1>
+                <div class="col-4 text-center bg-primary text-white m-4 p-4">
+                    <h2>
                     Nombre des clients:
-                    </h1>
-                    <?php echo $data ['user']; ?>
+                    </h2>
+                    <h2> <?php echo $data ['user']; ?>  </h2>
                 </div>
             </div>            
           </div>

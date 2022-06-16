@@ -92,10 +92,10 @@ if(isset($_SESSION[$_SESSION['email']])){
               <div class="modal-body">
                 <form action="actions/valider-panier.php" method="POST">
                   <div class="form-group">
-                    <input type="text" name="rue" class="form-control mb-3" placeholder="Rue/village">
+                    <input type="text" name="rue" class="form-control mb-3" placeholder="Rue/village" required>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="ville" class="form-control mb-3" placeholder="Ville">
+                    <input type="text" name="ville" class="form-control mb-3" placeholder="Ville" required>
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Confirmer</button>

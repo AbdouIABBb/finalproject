@@ -69,25 +69,31 @@ if(isset($_GET['cat'])){
   <body>
   	<?php include "inc/header.php"; ?> 
 
-    <div class="omar" >
+   
+
+
 
     
-    <p >If you want to make intelligent, </p> 
-    <p > get books from here.</p> 
-
     
-<!-- Section-->
-
-
-</div>
-
-
-
-    <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">
-    <div style="align-self:center;" >
-    <h1 > Nos derniers Livres </h1> </div>
         <?php
         if(!isset($_GET['cat'])){
+
+
+
+         print'
+         <div class="omar" >
+
+    
+         <p >If you want to make intelligent, </p> 
+         <p > get books from here.</p> 
+     
+         
+     
+     
+     
+     </div> 
+     <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">
+         <h1 > Nos derniers Livres </h1> ' ;
           foreach($book as $b ){
             print ' <div class="row col-3 mt-2"> 
                       <div class="card" style="width: 18rem;">
@@ -111,7 +117,8 @@ if(isset($_GET['cat'])){
                                   </div>';
                               }
           }
-        }else{
+        }else{ 
+          print '<div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">';
           foreach($book as $b ){
             print ' <div class="row col-3"> 
                       <div class="card" style="width: 16rem;">

@@ -29,7 +29,7 @@ include "../inc/functions.php" ;
 }
 
 // creation de panier
-$requette_panier ="INSERT INTO panier(user,total,date_creation, rue, ville ) VALUES('$user','$total','$date', '$rue', '$ville') ";
+$requette_panier ="INSERT INTO panier(user,total,date_creation, rue, ville ) VALUES('$user','$total',NOW(), '$rue', '$ville') ";
 $resultat = $conn ->query($requette_panier);
 $panier_id = $conn ->LastInsertId();
 
@@ -42,7 +42,7 @@ $panier_id = $conn ->LastInsertId();
     $total=$commande[1];
     $id_produit=$commande[4];
     $rue= $_POST['rue'];
-    $requette = "INSERT INTO  commandes(quantite,total,panier,date_creation,produit) VALUES('$quantite','$total','$panier_id','$date','$id_produit')";
+    $requette = "INSERT INTO  commandes(quantite,total,panier,date_creation,produit) VALUES('$quantite','$total','$panier_id',NOW(),'$id_produit')";
     $resultat=$conn ->query($requette);
 
  }

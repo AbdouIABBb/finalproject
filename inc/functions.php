@@ -294,6 +294,22 @@ function AnullerCommande($pannier_id){
   }
 }
 
+function AnullerPanier($user_id){
+  $conn=connect();
+  $requette ="SELECT id,date_creation,etat FROM panier where user=:id";
+  $resultat = $conn ->prepare($requette);
+  $resultat->bindParam(':id',$user_id);
+  $resultat->execute();
+  $paniers = $resultat ->fetchALL();
+  foreach ($paniers as $panier){
+    if($panier['etat'] != ' annuler'){
+      if((time()-3600) > (5*60+strtotime($panier['date_creation']))){
+        AnullerCommande($panier['id']);
+        changerEtatCommande("annuler",$panier['id']);
+      }
+    }
+  }
+}
 
 
 ?>

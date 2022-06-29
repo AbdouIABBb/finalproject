@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include "inc/functions.php";
+AnullerPanier($_SESSION['id']);
 $category= getALLcategory();
 
 if(isset($_GET['cat'])){

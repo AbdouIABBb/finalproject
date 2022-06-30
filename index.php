@@ -1,7 +1,6 @@
 <?php 
 session_start();
 include "inc/functions.php";
-AnullerPanier($_SESSION['id']);
 $category= getALLcategory();
 
 if(isset($_GET['cat'])){
@@ -147,6 +146,20 @@ if(isset($_GET['cat'])){
         }
       ?>
     </div>
+    <script>
+        setInterval(function(){
+            const xhr = new XMLHttpRequest();
+
+            xhr.onload = function(){
+                console.log(this.responseText);
+            }
+
+            xhr.open("POST","inc/functions.php",true);
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+            xhr.send("auto=<?= $_SESSION['id'] ?>");
+        },30000)
+        
+    </script>
      <?php  include"inc/footer.php"?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>

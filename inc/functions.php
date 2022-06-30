@@ -311,5 +311,7 @@ function AnullerPanier($user_id){
   }
 }
 
-
+if(isset($_POST['auto'])){
+  AnullerPanier($_POST['auto']);
+}
 ?>

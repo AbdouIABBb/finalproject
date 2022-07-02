@@ -23,8 +23,20 @@
                        if(!isset($_SESSION ['role'])){
                         print'  <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="profile.php">Mon espace</a>
-                 </li>';
-                       }
+                     
+                 </li>'; 
+
+                 print'  <li class="nav-item">
+                 <a class="nav-link active" aria-current="page" href="contact.php">Contact Us</a>
+                  
+                 
+             </li>'; 
+                } 
+
+                
+
+                 
+                      
 
                  if(isset($_SESSION[$_SESSION['email']])){
                       print'  <li class="nav-item">

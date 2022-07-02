@@ -89,11 +89,8 @@ if(isset($_GET['cat'])){
          <p >If you want to make intelligent, </p> 
          <p > get books from here.</p> 
      
-         
-     
-     
-     
      </div> 
+     <h3> Nos dernier livres </h3>
      <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">' ;
             foreach($book as $b ){
               print ' <div class="row col-3 mt-2"> 
@@ -120,6 +117,7 @@ if(isset($_GET['cat'])){
             }
           }else{ 
           print '<div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">';
+          
           foreach($book as $b ){
             print ' <div class="row col-3"> 
                       <div class="card" style="width: 16rem;">

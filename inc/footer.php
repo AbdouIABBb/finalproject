@@ -117,14 +117,14 @@ ul{
   	 		<div class="footer-col">
   	 			<h4>company</h4>
   	 			<ul>
-  	 				<li><a href="#">about us</a></li>
-  	 				<li><a href="#">our services</a></li>
-  	 				<li><a href="#">privacy policy</a></li>
-  	 				<li><a href="#">affiliate program</a></li>
+  	 				<li><a href="#">Acueill</a></li>
+  	 				<li><a href="#">Connexion </a></li>
+  	 				<li><a href="#">Inscription</a></li>
+  	 				<li><a href="#">Contactez-nous</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>get help</h4>
+  	 			<h4>Categorie</h4>
   	 			<ul>
   	 				<li><a href="#">FAQ</a></li>
   	 				<li><a href="#">shipping</a></li>
@@ -134,12 +134,12 @@ ul{
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">
-  	 			<h4>online shop</h4>
+  	 			<h4>Nos informations</h4>
   	 			<ul>
-  	 				<li><a href="#">watch</a></li>
-  	 				<li><a href="#">bag</a></li>
-  	 				<li><a href="#">shoes</a></li>
-  	 				<li><a href="#">dress</a></li>
+  	 				<li><a href="#"></a>Suite 721 Tizi Ouzou NY 1006</li>
+  	 				<li><a href="#">1235 2355 98 </a></li>
+  	 				<li><a href="#">user.user200109@gmail.com</a></li>
+  	 				<li><a href="#">LeLibrare</a></li>
   	 			</ul>
   	 		</div>
   	 		<div class="footer-col">

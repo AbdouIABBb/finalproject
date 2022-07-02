@@ -5,6 +5,7 @@
   $category= getALLcategory();
   if(isset($_POST['submit'])){
     mailToMe($_POST['email'],$_POST['subject'],$_POST['message'],$_POST['name']);
+    header("Location: contact.php");
   }
 ?>
 <!doctype html>
@@ -86,7 +87,7 @@ Votre Message a été reçu , Merci!
 <span class="fa fa-map-marker"></span>
 </div>
 <div class="text pl-3">
-<p><span>Addresse:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+<p><span>Addresse:</span> 198 , Suite 721 Tizi Ouzou NY 1006</p>
 </div>
 </div>
 <div class="dbox w-100 d-flex align-items-center">
@@ -102,7 +103,7 @@ Votre Message a été reçu , Merci!
 <span class="fa fa-paper-plane"></span>
 </div>
 <div class="text pl-3">
-<p><span>Email:</span> <a href="/cdn-cgi/l/email-protection#2f464149406f56405a5d5c465b4a014c4042"><span class="__cf_email__" data-cfemail="f0999e969fb0899f858283998495de939f9d">[email&#160;protected]</span></a></p>
+<p><span>Email:</span> <a href="#"><span class="__cf_email__" data-cfemail="f0999e969fb0899f858283998495de939f9d">user.user200109@gmail.com</span></a></p>
 </div>
 </div>
 <div class="dbox w-100 d-flex align-items-center">
@@ -110,7 +111,7 @@ Votre Message a été reçu , Merci!
 <span class="fa fa-globe"></span>
 </div>
 <div class="text pl-3">
-<p><span>Website</span> <a href="#">yoursite.com</a></p>
+<p><span>Website</span> <a href="#">LeLaibrare.com</a></p>
 </div>
 </div>
 </div>

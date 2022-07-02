@@ -8,6 +8,7 @@ if(isset($_GET['cat'])){
   $book = getBooksByCategory($idcat);
 }else if(!empty($_POST)) {
   $book = searchbook($_POST['search']);
+  $_SESSION['search'] = true;
 }else{
   $book= getLastBook();
 }
@@ -76,7 +77,8 @@ if(isset($_GET['cat'])){
     
     
         <?php
-        if(!isset($_GET['cat'])){
+        if(is_array($book)){
+        if(!isset($_GET['cat']) && !isset($_SESSION['search'])){
 
 
 
@@ -92,32 +94,31 @@ if(isset($_GET['cat'])){
      
      
      </div> 
-     <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">
-         <h1 > Nos derniers Livres </h1> ' ;
-          foreach($book as $b ){
-            print ' <div class="row col-3 mt-2"> 
-                      <div class="card" style="width: 18rem;">
-                          <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
-                          <div class="card-body">
-                              <h5 class="card-title"> '.$b['nom'].' </h5>
-                              <p class="card-text">'.$b['auteur'].'</p>
-                              <p class="card-text">'.$b['prix'].' DA</p>
-                              <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>';
-                              if($b['quantite'] == 0){
-                                print '<div class="btn btn-danger" style="margin-left:1.3px;">
-                                        rupture de stock
-                                      </div>
+     <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">' ;
+            foreach($book as $b ){
+              print ' <div class="row col-3 mt-2"> 
+                        <div class="card" style="width: 18rem;">
+                            <img src="images/'.$b['image'].'" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"> '.$b['nom'].' </h5>
+                                <p class="card-text">'.$b['auteur'].'</p>
+                                <p class="card-text">'.$b['prix'].' DA</p>
+                                <a href="books.php?id='.$b['id'].'" class="btn btn-primary">Voir Plus</a>';
+                                if($b['quantite'] == 0){
+                                  print '<div class="btn btn-danger" style="margin-left:1.3px;">
+                                          rupture de stock
+                                        </div>
+                                        </div>
+                                        </div>
+                                      </div>';
+                                }else{
+                                  print '
                                       </div>
                                       </div>
                                     </div>';
-                              }else{
-                                print '
-                                    </div>
-                                    </div>
-                                  </div>';
-                              }
-          }
-        }else{ 
+                                }
+            }
+          }else{ 
           print '<div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">';
           foreach($book as $b ){
             print ' <div class="row col-3"> 
@@ -144,6 +145,10 @@ if(isset($_GET['cat'])){
   
           }
         }
+      }else{
+        print '<h3>'.$book.'</h3>';
+      }
+        unset($_SESSION['search']);
       ?>
     </div>
     <script>

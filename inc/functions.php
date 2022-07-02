@@ -50,10 +50,13 @@ function getLastBook(){
 
 function searchbook($keywords){ 
   $conn=connect();
-  $requette = "SELECT * FROM book where nom LIKE '$keywords' ";
+  $requette = "SELECT * FROM book where nom LIKE '%$keywords%' OR auteur LIKE '%$keywords%'";
   $resultat =$conn->query($requette);
   $book =$resultat->fetchALL();
-  return $book;
+  if(count($book) > 0){
+    return $book ; 
+  }
+  return "On a rien trouvee pour le term: '$keywords'";
 }
 
 function getbookbyid ($id){
@@ -210,7 +213,10 @@ function getBooksByCategory($id){
   $resultat->bindParam(':id',$id);
   $resultat->execute();
   $books = $resultat ->fetchALL();
-  return $books ; 
+  if(count($books) > 0){
+    return $books ; 
+  }
+  return "Il ya pas des livres dans cette categorie";
 }
 
 function getALLcommandes (){

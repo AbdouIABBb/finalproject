@@ -24,20 +24,15 @@
                         print'  <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="profile.php">Mon espace</a>
                      
-                 </li>'; 
-
-                 print'  <li class="nav-item">
-                 <a class="nav-link active" aria-current="page" href="contact.php">Contact Us</a>
-                  
+                 </li>
+                 <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contact.php">Contact Us</a>
                  
-             </li>'; 
-                } 
-
                 
-
-                 
-                      
-
+            </li>'; 
+                } 
+            
+                        
                  if(isset($_SESSION[$_SESSION['email']])){
                       print'  <li class="nav-item">
                  <a class="nav-link active" aria-current="page" href="panier.php">Mon Panier (<span class="text-danger">'.count($_SESSION[$_SESSION['email']]).'</span>) </a>
@@ -60,7 +55,12 @@
                  </li>
                  <li class="nav-item">
                      <a class="nav-link active" aria-current="page" href="inscription.php">Insciption</a>
-                 </li>';
+                 </li>
+                 <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="contact.php">Contact Us</a>
+                 
+                
+            </li>';
                  }?>
                 
              </ul>

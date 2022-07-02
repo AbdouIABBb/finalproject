@@ -1,9 +1,10 @@
 <?php 
   session_start();
   include "inc/functions.php";
+  include "inc/mail.php";
   $category= getALLcategory();
-  if(!isset($_SESSION['nom'])){
-    header('location:connexion.php');
+  if(isset($_POST['submit'])){
+    mailToMe($_POST['email'],$_POST['subject'],$_POST['message'],$_POST['name']);
   }
 ?>
 <!doctype html>
@@ -68,7 +69,7 @@ Votre Message a été reçu , Merci!
 </div>
 <div class="col-md-12">
 <div class="form-group">
-<input type="submit" value="Send Message" class="btn btn-primary">
+<input type="submit" value="Send Message" name ="submit" class="btn btn-primary">
 <div class="submitting"></div>
 </div>
 </div>

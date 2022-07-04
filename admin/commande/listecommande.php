@@ -98,7 +98,7 @@ $details = getAlldetails();
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+      
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
           <a class="nav-link px-3" href="../../deconnexion.php">Deconnexion</a>
@@ -137,13 +137,13 @@ $details = getAlldetails();
                   
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../commande/listecommande.php">
+                  <a class="nav-link active" href="../commande/listecommande.php">
                     <span data-feather="file" class="align-text-bottom"></span>
                     commandes
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="../profile.php">
+                  <a class="nav-link " href="../profile.php">
                     <span data-feather="layers" class="align-text-bottom"></span>
                     Profile
                   </a>
@@ -202,7 +202,7 @@ $details = getAlldetails();
                           <td>
                             <a data-bs-toggle="modal" data-bs-target="#Commandes'.$c['id'].'" class="btn btn-success">Afficher</a>';
                           if($c['etat'] == " confirmer" || $c['etat'] == "En cours"){
-                            echo '<a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-primary">Traiter</a>
+                            echo '<a data-bs-toggle="modal" data-bs-target="#Traiter'.$c['id'].'" class="btn btn-primary " style="margin-left:5px;">Traiter</a>
                                     </td>
                                   </tr>';
                           }
@@ -285,7 +285,7 @@ foreach ($commandes as $index=> $c ) { ?>
                         }else{
                           print'<div class="form-group mb-3">
                           <select name="etat" class="form-control">
-                               <option value="confirmer">confirmer</option>
+                               <option value="confirmer">confirmée</option>
                                <option value="annuler">Annulée</option>
                                <option value="payer">Payée</option>
                           </select>

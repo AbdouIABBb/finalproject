@@ -85,8 +85,7 @@ $category = getALLcategory();
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">LeLibraire</a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+      
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
           <a class="nav-link px-3" href="../../deconnexion.php">Deconnexion</a>
@@ -112,7 +111,7 @@ $category = getALLcategory();
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listelivres.php">
+                <a class="nav-link active" href="listelivres.php">
                   <span data-feather="shopping-cart" class="align-text-bottom"></span>
                   Livres
                 </a>
@@ -130,7 +129,7 @@ $category = getALLcategory();
                   </a>
                 </li>
               <li class="nav-item">
-                <a class="nav-link active" href="../profile.php">
+                <a class="nav-link " href="../profile.php">
                   <span data-feather="layers" class="align-text-bottom"></span>
                   Profile
                 </a>

@@ -39,7 +39,7 @@ function getALLbook(){
 
 function getLastBook(){
   $conn=connect();
-  $requette = "select * FROM book order by id desc limit 4" ;
+  $requette = "select * FROM book order by id desc limit 8" ;
   $resultat = $conn ->query($requette);
   $book = $resultat ->fetchALL();
   return $book ;
@@ -50,7 +50,7 @@ function getLastBook(){
 
 function searchbook($keywords){ 
   $conn=connect();
-  $requette = "SELECT * FROM book where nom LIKE '%$keywords%' OR auteur LIKE '%$keywords%'";
+  $requette = "SELECT * FROM book where nom LIKE '%$keywords%' OR auteur LIKE '%$keywords%'  OR category LIKE '%$keywords%'";
   $resultat =$conn->query($requette);
   $book =$resultat->fetchALL();
   if(count($book) > 0){
@@ -309,7 +309,7 @@ function AnullerPanier($user_id){
   $paniers = $resultat ->fetchALL();
   foreach ($paniers as $panier){
     if($panier['etat'] != ' annuler'){
-      if((time()-3600) > (5*60+strtotime($panier['date_creation']))){
+      if((time()) > (1*60+strtotime($panier['date_creation']))){
         AnullerCommande($panier['id']);
         changerEtatCommande("annuler",$panier['id']);
       }

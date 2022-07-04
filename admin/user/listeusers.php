@@ -86,7 +86,7 @@ $user = getALLusers ();
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+     
       <div class="navbar-nav">
         <div class="nav-item text-nowrap">
           <a class="nav-link px-3" href="../../deconnexion.php">Deconnexion</a>
@@ -157,7 +157,7 @@ $user = getALLusers ();
                   <th scope="col">prenom</th>
                   <th scope="col">Numero</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Action</th>
+                  
                 </tr>
               </thead>
               <tbody> 
@@ -172,9 +172,7 @@ $user = getALLusers ();
                         <td> '.$u['prenom'].' </td>
                         <td> '.$u['telephone'].' </td>
                         <td> '.$u['email'].' </td>
-                        <td> 
-                          <a onClick="return popUpDeleteUser()" href="supprimeruser.php?idc='.$u['id'].'" class="btn btn-danger">Supprimer</a>
-                        </td>
+                           
                       </tr>';
                   } 
                 ?>

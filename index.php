@@ -86,11 +86,13 @@ if(isset($_GET['cat'])){
          <div class="omar" >
 
     
-         <p >If you want to make intelligent, </p> 
-         <p > get books from here.</p> 
+         <p > " Un bon livre est un bon ami " </p> 
+         <p > </p> 
      
      </div> 
-     <h3> Nos dernier livres </h3>
+     <br/>
+     <br/>
+     <h1> Nos dernier livres </h1>
      <div class="row col-12 mt-4 p-5" style="justify-content:center; gap:1em;">' ;
             foreach($book as $b ){
               print ' <div class="row col-3 mt-2"> 
